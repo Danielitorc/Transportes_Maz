@@ -11,7 +11,7 @@
 <body>
 
     <header class="header">
-        <!-- <img class="logo" src="../img/logo.png" alt=""> -->
+        <img class="logo" src="../img/logo.png" alt="">
 
         <p>Zoraya Ruiz</p>
         <p>Cerrar Sesión</p>
