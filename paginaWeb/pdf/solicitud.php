@@ -11,7 +11,7 @@
     //Codigo css de la plantilla
     $css = file_get_contents('pdf_solicitud/style.css');
 
-    $id = ($_GET['id']);
+    $id = ($_GET['idSolicitud']);
 
     $mpdf = new \Mpdf\Mpdf([
 

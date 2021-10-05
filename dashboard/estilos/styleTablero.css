@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
 html {
   font-size: 62.5%;
   box-sizing: border-box;
@@ -11,6 +13,8 @@ html {
 
 body {
   font-size: 1.5rem;
+  font-family: 'Poppins', sans-serif;
+  line-height: 1.4;
 }
 
 li {
@@ -23,6 +27,42 @@ a {
 
 img {
   width: 100%;
+}
+
+.contenedor{
+  width: 95%;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+p{
+  font-size: 1.78rem;
+}
+
+label{
+  font-size: 1.7rem;
+}
+
+.notificacion{
+  padding: 1.5rem 3rem;
+  opacity: 0;
+  margin: 1.5rem 0;
+  transition: opacity .5s ease;
+}
+
+.visible{
+  opacity: 1;
+}
+
+.correcto{
+  background-color: rgb(179, 241, 117);
+  color: green;
+}
+
+.error{
+  background-color: rgb(238, 148, 166);
+  color: rgb(163, 0, 33);
+  font-weight: bold;
 }
 
 /************************************ Dashboard ******************************/
@@ -122,9 +162,10 @@ table {
   width: 100%;
 }
 
+
 th,
 td {
-  text-align: center;
+  text-align: left;
   padding: 8px;
 }
 
@@ -138,7 +179,7 @@ th {
 }
 .scroll {
   overflow: scroll;
-  height: 70rem;
+  height: 53rem;
 }
 
 /****** Ruta ******/
@@ -177,4 +218,98 @@ th {
   text-align: center;
 }
 
-/************************************ Termina Dashboard ******************************/
+/************************************ Cotizacion ******************************/
+.totales{
+  width: 35%;
+}
+
+.descripcion__totales{  
+  text-align: right;
+  float: left;
+}
+
+.precio__totales{
+  float: right;
+  margin-left: 1rem;
+}
+
+fieldset {
+  margin-top: 2rem;
+  -webkit-box-shadow: 0px 3px 8px 3px rgba(0,0,0,.5);
+  -moz-box-shadow: 0px 3px 8px 3px rgba(0,0,0,.5);
+  box-shadow: 0px 3px 8px 3px rgba(0,0,0,.5);
+  border-radius: 10px;
+  border: none;
+  padding: 1rem 3rem 2.6rem 3rem;
+}
+
+legend{
+  font-size: 2.3rem;
+  font-weight: bold;
+  background-color: white;
+  margin-left: 2rem;
+}
+
+.campos3{
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  align-items: center;
+}
+
+.campos3 span{
+  color: red;
+}
+
+.campos4{
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.5rem;
+}
+
+.input_100{
+  width: 100%;
+  margin-top: 2rem;
+}
+
+.campo input[type=text],
+textarea
+{
+    width: 100%;
+    border: none;
+    border-radius: .8rem;
+    background-color: #f0eeee;
+    padding: 1rem;
+    height: 2.8rem;
+    margin-top: .5rem;
+    font-size: 1.3rem;
+}
+
+textarea{
+  height: 6rem;
+}
+
+.enviar{
+  margin-top: 1.2rem;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.campo input[type=submit]{
+  margin-top: 2rem;
+  background-color: rgb(54, 180, 54);
+  border: none;
+  border-radius: .5rem;
+  color: white;
+  padding: 1rem 4rem;
+  text-transform: uppercase;
+  font-size: 2rem;
+  transition: background-color .5s ease-in-out;
+  font-weight: bold;
+}
+
+.campo input[type=submit]:hover{
+  cursor: pointer;
+  background-color: rgb(23, 119, 23);
+}
+

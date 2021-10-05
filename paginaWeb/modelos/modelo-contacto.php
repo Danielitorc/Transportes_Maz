@@ -58,10 +58,6 @@
                         'id_insertado' => $stmt->insert_id
                     )
                 );
-
-
-
-
                 
             }
             

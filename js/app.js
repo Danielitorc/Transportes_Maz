@@ -135,7 +135,7 @@ function insertarBD(datos){
                 location.assign(`../paginaWeb/pdf/solicitud.php?id=${respuesta.datos.id_insertado}`)
             }, 3000);
 
-           document.querySelector('form').reset();
+           //document.querySelector('form').reset();
 
         }
     }

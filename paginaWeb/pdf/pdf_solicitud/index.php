@@ -56,7 +56,7 @@
 
         <div id="invoice">
           <h1>FOLIO DE SOLICITUD '. $sol["id"].'</h1>
-          <div class="date">Fecha: '. $sol["fecha"].'</div>
+          <div class="date">Fecha: '.$date.'</div>
         </div>
       </div>
 
@@ -70,7 +70,7 @@
 
       <tbody>
         <tr>
-          <td class="contenido_tabla datos">'.$sol["datosEnt"].'</td>
+          <td class="contenido_tabla datos">'.$sol["datosRec"].'</td>
         </tr>
       </tbody>
     </table>
@@ -107,7 +107,7 @@
 
       <tbody>
         <tr>
-          <td class="contenido_tabla datos">'.$sol["datosRec"].'</td>
+          <td class="contenido_tabla datos">'.$sol["datosEnt"].'</td>
         </tr>
       </tbody>
     </table>
