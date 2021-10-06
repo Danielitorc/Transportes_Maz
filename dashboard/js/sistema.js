@@ -1,5 +1,4 @@
 const formularioCotizacion = document.querySelector('#cotizacion');
-let totales = document.querySelector('.totales')
 
 eventListeners();
 
@@ -23,27 +22,30 @@ function leerformulario(e){
     const accion = document.querySelector('#accion').value;
     let idSolicitud = document.querySelector('#idSolicitud').value;
 
-
-
-    if(costoFlete === '' || costoManiobras === '' || costoSeguro === '' || comentariosTM === ''){
-        //2 parametros texto y clase
+    if(!/^([0-9])*$/.test(costoFlete) || !/^([0-9])*$/.test(costoManiobras) || !/^([0-9])*$/.test(costoSeguro)){
+        mostrarNotificacion('Ingrese solo Números', 'error');
+    }else if(costoFlete === '' || costoManiobras === '' || costoSeguro === '' || comentariosTM === ''){
+            //2 parametros texto y clase
+    
         mostrarNotificacion('Todos los campos son Obligatorios', 'error');
         console.log('Campo vacio');
-    }else{
-        const datosCotizacion = new FormData();
-        datosCotizacion.append('idSolicitud', idSolicitud);
-        datosCotizacion.append('costoFlete', costoFlete);
-        datosCotizacion.append('costoManiobras', costoManiobras);
-        datosCotizacion.append('costoSeguro', costoSeguro);
-        datosCotizacion.append('comentariosTM', comentariosTM);
-        datosCotizacion.append('accion', accion);
+        }else{
+            const datosCotizacion = new FormData();
+            datosCotizacion.append('idSolicitud', idSolicitud);
+            datosCotizacion.append('costoFlete', costoFlete);
+            datosCotizacion.append('costoManiobras', costoManiobras);
+            datosCotizacion.append('costoSeguro', costoSeguro);
+            datosCotizacion.append('comentariosTM', comentariosTM);
+            datosCotizacion.append('accion', accion);
 
-        console.log(...datosCotizacion);
+            //console.log(...datosCotizacion);
 
-        if(accion === 'cotizar'){
-            insertarBD(datosCotizacion);
+            if(accion === 'cotizar'){
+                mostrarNotificacion('Datos Ingresados Correctamente', 'correcto');
+                insertarBD(datosCotizacion);
+                console.log('correcto')
+            }
         }
-    }
 }
 
 function insertarBD(datos) {
@@ -65,7 +67,7 @@ function insertarBD(datos) {
 
             setTimeout(() => {
                 location.assign(`../pdf/folio_cotizacion.php?id=${respuesta.datos.id_insert_cot}`)
-            }, 4000);
+            }, 3500);
 
         }
     }
@@ -110,9 +112,6 @@ function mostrarNotificacion(mensaje, clase) {
 //     costoManiobras = parseInt(costoManiobras)
 //     costoSeguro = parseInt(costoSeguro)
 //     total = costoSeguro + costoFlete + costoManiobras;
-
-    
-
 //     console.log(total);
 
 // }

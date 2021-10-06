@@ -1,4 +1,6 @@
 <?php
+
+    //Funcion para mostrar las solicitudes pendientes por cotizar en el dashboard
     function obtenerSolicitudes(){
         include 'db.php';
         try{

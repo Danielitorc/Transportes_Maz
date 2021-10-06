@@ -53,7 +53,3 @@ function cambiarSeccion(){
     })
 }
 
-// Termina Paginacion
-
-/***************** Formulario de cotizacion  ********************/
-

@@ -24,13 +24,9 @@ siManiobras.addEventListener('input', validarManiobras);
 noManiobras.addEventListener('input', validarnoManiobras);
 
 function eventListeners(){
-    //Cuando el formulario de crear o editar se ejecuta
+    //Cuando el formulario de crear se ejecuta
     formularioContactos.addEventListener('submit', leerFormulario);
 
-    //Listener para elminar el boton
-
-
-    // listadoContactos.addEventListener('click', eliminarContacto);
 }
 
 function leerFormulario(e){
@@ -54,28 +50,40 @@ function leerFormulario(e){
     const comentariosManiobras = document.querySelector('#comentariosManiobras').value;
     const accion= document.querySelector('#accion').value;
 
+
+    //Agrego los errores al HTMLs
     errors.innerHTML = '';
     validarTerminos(e);
-    
-    
 
-    if(nombre === '' || apellidos === '' || empresa === '' || correo === '' || telefono === '' || datosEnt === '' || datosRec === '' || asegurar[0].checked === false && asegurar[1].checked === false || maniobras[0].checked === false && maniobras[1].checked === false || unidad === '' || adicionales === '' || fecha === '' || hora === '' || !terminos.checked){
-        //Dos parametros (texto, clase)
+    if(!/^([0-9])*$/.test(telefono)){
+        errors.style.display = 'block';
+        errors.innerHTML += '<li>Ingrese solo numeros para el Teléfono</li>';
+        setTimeout(() => {
+            errors.style.display = 'none';
+        }, 6000);
+    }else if(telefono.length < 10){
+        errors.style.display = 'block';
+        errors.innerHTML += '<li>El telefono debe tener 10 digitos</li>';
+        setTimeout(() => {
+            errors.style.display = 'none';
+        }, 6000);
+    }else if(nombre === '' || apellidos === '' || empresa === '' || correo === '' || telefono === '' || datosEnt === '' || datosRec === '' || asegurar[0].checked === false && asegurar[1].checked === false || maniobras[0].checked === false && maniobras[1].checked === false || unidad === '' || adicionales === '' || fecha === '' || hora === '' || !terminos.checked ){
+        //Si no se llenaron los campos, mostrara un error con indicaciones
         errors.style.display = 'block';
         errors.innerHTML += '<li>Todos los Campos son obligatorios</li>';
         setTimeout(() => {
             errors.style.display = 'none';
-        }, 4000);
+        }, 6000);
 
-        // mostrarNotificacion('Contacto Creado Correctamente', 'exito');
     }else{
+        
         valorManiobras();
         seguro();
 
         validarOfertas(e);
         
 
-        //Pasa la valaidacion, crear llamado a ajax
+        //Si pasa la valaidacion, crear llamado a ajax
         
         const infoContacto = new FormData();
         infoContacto.append('nombre', nombre);
@@ -107,10 +115,7 @@ function leerFormulario(e){
             //Se crea un nueva solicitud
             insertarBD(infoContacto);
 
-        }else{
-            //Editar el contacto
         }
-       
     }
 }
 
@@ -132,10 +137,10 @@ function insertarBD(datos){
 
             //Inserta un nuevo elemento a la tabla
             setTimeout(() => {
-                location.assign(`../paginaWeb/pdf/solicitud.php?id=${respuesta.datos.id_insertado}`)
+                window.location.replace(`../paginaWeb/pdf/solicitud.php?id=${respuesta.datos.id_insertado}`)
             }, 3000);
 
-           //document.querySelector('form').reset();
+           document.querySelector('form').reset();
 
         }
     }
@@ -143,6 +148,7 @@ function insertarBD(datos){
     xhr.send(datos);
 }
 
+//Validar si el cliente desea recibir ofertas a su correo
 function validarOfertas(){
     ofertas = document.querySelector('#ofertas').checked;
     if(ofertas === true){
@@ -150,34 +156,8 @@ function validarOfertas(){
     }
 }
 
-function valorManiobras(){
-    maniobras = document.querySelector('#maniobras').checked;
-    if(maniobras === true){
-        maniobras = 'Requieridas';
-    }else{
-        maniobras = 'No Requieridas';
-    }
-}
-
-function seguro(){
-    
-    asegurar = document.querySelector('#asegurar').checked;
-    if(asegurar === true){
-        asegurar = 'Asegurado';
-    }else{
-        asegurar = 'Sin seguro';
-    }
-}
-
-function validarAsegurar(e){
-    e.preventDefault();
-    if(asegurar[0].checked){
-        mostrar.style.display = 'block'; 
-    }
-
-
-}
-
+//Establecer una fecha optima para poder realizar la cotizacion y vender un servicio de calidad
+//Solo se permitira seleccionar una fecha de recoleccion 2 dias despues de la solicitud
 function deshabilitarFecha(){
     const fechaInput = document.querySelector('#fecha');
 
@@ -204,6 +184,7 @@ function deshabilitarFecha(){
     
 }
 
+//Se deben aceptar terminos y condiciones de los usos de los datos proporcionados
 function validarTerminos(e){
     e.preventDefault();
     if(!terminos.checked){
@@ -215,6 +196,16 @@ function validarTerminos(e){
     }
 }
 
+//Asigno el valor para determinar si el cliente requiere seguro en su cotizacion
+function seguro(){
+    asegurar = document.querySelector('#asegurar').checked;
+    if(asegurar === true){
+        asegurar = 'Asegurado';
+    }else{
+        asegurar = 'Sin seguro';
+    }
+}
+//Si se selecciona que no require seguro para el traslado de su mercancia ocultara el campo para ingresar el valor de la  mercancia y calcular el costo
 function validarnoAsegurar(e){
     e.preventDefault();
     if(asegurar[1].checked){
@@ -222,6 +213,25 @@ function validarnoAsegurar(e){
     }
 }
 
+//Si se selecciona la opcion asegurar mostrara un campo donde se ingresara el valor de la mercancia y calcular el costo
+function validarAsegurar(e){
+    e.preventDefault();
+    if(asegurar[0].checked){
+        mostrar.style.display = 'block'; 
+    }
+}
+
+//Asigno el valor del input radio para las maniobras
+function valorManiobras(){
+    maniobras = document.querySelector('#maniobras').checked;
+    if(maniobras === true){
+        maniobras = 'Requieridas';
+    }else{
+        maniobras = 'No Requieridas';
+    }
+}
+
+//Si no se requieren maniobras para el servicio se oculta el campo donde se describen las maniobras requeridas
 function validarManiobras(e){
     e.preventDefault();
     if(maniobras[0].checked === true){
@@ -229,9 +239,12 @@ function validarManiobras(e){
     }
 }
 
+//Si se requieren maniobras para el servicio mostrara el campo donde se describen las maniobras requeridas
 function validarnoManiobras(e){
     e.preventDefault();
     if(maniobras[1].checked=== true){
         mostrarManiobras.style.display = 'none';
     }
 }
+
+

@@ -72,12 +72,12 @@
                                                 if($sol["maniobras"] =='No Requieridas'){
                                                         $costoSeguro="No requiere Maniobras";?>
                                                         <label for="costoManiobras"><span>Maniobras No Requeridas</span></label>
-                                                        <input name="costoManiobras" id="costoManiobras" type="text" value="0.0">
+                                                        <input name="costoManiobras" id="costoManiobras" type="text" readonly="readonly"  value="0">
                                                 <?php      
                                                 }else{
                                                         $sol["costoManiobras"]= '';?>
                                                         <label for="costoManiobras">Costo de las maniobras</label>
-                                                        <input name="costoSeguro" id="costoManiobras" type="text">
+                                                        <input name="costoSeguro" id="costoManiobras"  type="text">
                                                         <?php }?>
                                         </div>
 
@@ -87,7 +87,7 @@
                                                 if($sol["asegurar"] =='Sin seguro'){
                                                         $costoSeguro="No requiere Seguro";?>
                                                         <label for="costoSeguro"><span>Seguro No Requerido</span></label>
-                                                        <input name="costoSeguro" id="costoSeguro" type="text" value="0.0">
+                                                        <input name="costoSeguro" id="costoSeguro" type="text" readonly="readonly" value="0">
                                                 <?php      
                                                 }else{
                                                         $sol["valorMercancia"]= '';?>

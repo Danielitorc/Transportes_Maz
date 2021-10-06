@@ -117,7 +117,7 @@
                     </div>
 
                     <div class="mostrar" id="mostrar">
-                        <span>Ingrese solo Números*</span>
+                        <p style="margin-left: 1.7rem;">Ingrese el valor de Mercancía <span style="font-size: 1rem;">Campo Obligatorio*</span></p>
                         <input class="valorMercancia" name="valorMercancia" id="valorMercancia" type="text" placeholder="Ingrese el valor de la mercancia">
                     </div>
                 </div>
