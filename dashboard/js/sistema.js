@@ -48,6 +48,8 @@ function leerformulario(e){
         }
 }
 
+console.log('hola sistema')
+
 function insertarBD(datos) {
     //llamado ajax
 

@@ -51,11 +51,11 @@
         </div>
 
         <div id="paso-2" class="ruta seccion">
-            <?php include 'pestañas/asignarRuta.php';?>
+            <?php include 'pestañas/rutas/asignarRuta.php';?>
         </div>
 
         <div id="paso-3" class="choferes seccion">
-            <h2>Choferes</h2>
+            <?php include'pestañas/choferes/indexChoferes.php' ?>
         </div>
 
         <div id="paso-4" class="empleados seccion">

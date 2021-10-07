@@ -3,6 +3,7 @@
 html {
   font-size: 62.5%;
   box-sizing: border-box;
+
 }
 
 *,
@@ -41,6 +42,7 @@ p{
 
 label{
   font-size: 1.7rem;
+  margin-left: 1rem;
 }
 
 .notificacion{
@@ -75,7 +77,7 @@ label{
     #9eaff6 50%,
     #7d95e3 100%
   );
-  padding: 2rem;
+  padding: 1rem;
   margin-bottom: 0;
   display: flex;
   justify-content: space-between;
@@ -97,10 +99,9 @@ label{
 
 .aside {
   background-color: rgb(37, 35, 35);
-  min-height: 100%;
   position: absolute;
-  max-width: 100%;
   width: 20rem;
+  height: 100%;
 }
 
 .menu-lateral {
@@ -179,7 +180,7 @@ th {
 }
 .scroll {
   overflow: scroll;
-  height: 53rem;
+  height: 55rem;
 }
 
 /****** Ruta ******/
@@ -188,15 +189,6 @@ th {
 }
 
 .ruta h2 {
-  text-align: center;
-}
-
-/******  Choferes *****/
-.choferes {
-  margin: 0 2rem;
-}
-
-.choferes h2 {
   text-align: center;
 }
 
@@ -256,6 +248,12 @@ legend{
   gap: 1.5rem;
   align-items: center;
 }
+.campos2{
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  align-items: center;
+  width: 70%;
+}
 
 .campos3 span{
   color: red;
@@ -265,6 +263,8 @@ legend{
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 1.5rem;
+  align-items: center;
+  margin-top: 1rem;
 }
 
 .input_100{
@@ -273,6 +273,9 @@ legend{
 }
 
 .campo input[type=text],
+.campo input[type=tel],
+.campo input[type=email],
+.campo input[type=date],
 textarea
 {
     width: 100%;
@@ -283,6 +286,14 @@ textarea
     height: 2.8rem;
     margin-top: .5rem;
     font-size: 1.3rem;
+}
+
+select{
+  border: none;
+  border-radius: .8rem;
+  background-color: #f0eeee;
+  padding: 1rem;
+  margin-top: 1rem;
 }
 
 textarea{
@@ -311,5 +322,53 @@ textarea{
 .campo input[type=submit]:hover{
   cursor: pointer;
   background-color: rgb(23, 119, 23);
+}
+
+/************** Choferes ***************/
+.cajaTexto{
+  border: none;
+  border-radius: .8rem;
+  background-color: #f0eeee;
+  padding: 1rem;
+}
+
+.form_choferes{
+  margin-top: 2.8rem;
+  /* display: none; */
+}
+
+.abajo{
+  margin-top: 2.5rem;
+}
+
+.lChoferes{
+  overflow: scroll;
+  height: 55rem;
+}
+
+.nuevoChofer{
+  display: flex;
+  flex-direction: column-reverse;
+  align-items: center;
+}
+
+.btn{
+  font-size: 2.8rem!important;
+  border: none;
+  text-decoration: none;
+}
+
+.btn_nuevoChofer{
+  text-decoration: none;
+  color: #4caf50;
+}
+
+.btn-editar{
+  color: #bfc20a;
+}
+
+.btn-borrar{
+  color: rgb(177, 30, 30);
+  background-color: transparent;
 }
 
