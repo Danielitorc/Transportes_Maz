@@ -111,24 +111,27 @@
             const direccion = document.querySelector('#direccion').value;
 
             if(nombre === '' || apellidos === '' || telefono === '' || numLicencia === '' || tipoLicencia === '' || correo === '' || fechaNac === '' || direccion === ''){
-                mostrarNotificacion();
+                mostrarNotificacion('Todos los campos son Obligatorios', 'error');
             }else{
-                console.log('Estan llenos')
+                mostrarNotificacion('Los datos se guardaron Correctamente', 'exito');
             }
             
         }
 
-        function mostrarNotificacion(){
+        function mostrarNotificacion(mensaje, clase){
             const notificacion = document.createElement('DIV');
-            notificacion.classList.add('notificacion');
-            notificacion.textContent = 'Hubo un error'
+            notificacion.classList.add(clase, 'notificacion');
+            notificacion.textContent = mensaje
 
             formularioChoferes.insertBefore(notificacion, document.querySelector('form fieldset'));
 
             setTimeout(() =>{
                 notificacion.classList.add('visible');
                 setTimeout(() => {
-                    notificacion.classList.remove('visible')
+                    notificacion.classList.remove('visible');
+                    setTimeout(() => {
+                        notificacion.remove();
+                    }, 500);
                     notificacion.remove();
                 }, 3000)
             }, 100);
