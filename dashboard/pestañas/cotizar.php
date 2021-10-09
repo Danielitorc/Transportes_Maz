@@ -104,29 +104,6 @@
                                         <label for="comentariosTM">Comentarios Adicionales para el Cliente </label>
                                         <textarea name="comentariosTM" id="comentariosTM" placeholder="Agregue indicaciones y/o retroalimentación al cliente"></textarea>
                                 </div>
-                                
-                                <!-- <div class="campo enviar">
-                                        <input type="hidden" id="accion" value="calcular">
-                                        <input type="submit" value="CALCULAR" name="enviar-cot" class="calcular">
-
-                                </div> -->
-
-<!-- 
-                                <div class="totales">
-                                        <div class="descripcion__totales">
-                                                <h2>Subtotal</h2>
-                                                <h2>IVA</h2>
-                                                <h2>TOTAL</h2>
-                                        </div>
-
-                                        <div class="precio__totales">
-                                                <h2>$50000</h2>
-                                                <h2>$5000</h2>
-                                                <h2 class="total">$5000</h2>
-                                        </div>
-                                </div> -->
-
-
 
 
 
