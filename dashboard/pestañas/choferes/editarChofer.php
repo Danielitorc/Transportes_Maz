@@ -1,52 +1,63 @@
-<!DOCTYPE html>
-<html lang="es">
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../../../css/normalize.css">
-    <link rel="stylesheet" href="../../estilos/styleTablero.css">
-    <title>Gestion Choferes</title>
-</head>
+<link rel="stylesheet" href="../../../css/normalize.css">
+<link rel="stylesheet" href="../../estilos/styleTablero.css">
 
 <body>
+<?php
 
-    <header class="header">
-        <img class="logo" src="../../../img/logo.png" alt="">
+    include 'funciones/folioAct.php';
 
-        <p>Zoraya Ruiz</p>
-        <p>Cerrar Sesión</p>
-    </header>
+    $id = filter_var($_GET['id'], FILTER_VALIDATE_INT);
+    if(!$id){
+        die('No valido');
+    }
+
+    $resultado = obtenerChofer($id);
+
+    $chofer = $resultado->fetch_assoc();
+    
+
+?>
+
+
 
     <div class="contenedor">
-        <form action="#" class="form_choferes" id="form_choferes">
+        <form action="#" class="form_choferes" id="actualizar_chofer">
+
             <fieldset>
                 <legend>Datos del Chofer</legend>
+
+                <div class="CampoId">
+                    <label for="" class="idChofer">Id del Chofer:</label>
+                        <input class="cajaTexto" type="text" id="idChofer" name="idChofer" 
+                        value="<?php echo $chofer["idChofer"] ? $chofer["idChofer"]:'';?>">
+                    </input>
+                </div>
 
                 <div class="campos3">
                     <div class="campo">
                         <label for="nombre">Nombre</label>
-                        <input class="cajaTexto" type="text" id="nombre" name="nombre">
+                        <input class="cajaTexto" type="text" id="nombre" name="nombre" value="<?php echo $chofer["nombre"] ? $chofer["nombre"]:'';?>"></input>
                     </div>
 
                     <div class="campo">
                         <label for="apellidos">Apellidos</label>
-                        <input class="cajaTexto" type="text" id="apellidos" name="apellidos">
+                        <input class="cajaTexto" type="text" id="apellidos" name="apellidos" value="<?php echo $chofer["apellidos"] ? $chofer["apellidos"]:'';?>">
                     </div>
 
                     <div class="campo">
                         <label for="telefono">Teléfono</label>
-                        <input class="cajaTexto" type="tel" id="telefono" name="telefono">
+                        <input class="cajaTexto" type="tel" id="telefono" name="telefono" 
+                        value="<?php echo $chofer["telefono"] ? $chofer["telefono"]:'';?>">
                     </div>
-
+                    
 
                 </div>
 
                 <div class="campos4 abajo">
                     <div class="campo">
-                        <select name="tipoLicencia" id="tipoLicencia">
-                            <option value="" disabled selected>-- Tipo de Licencia</option>
+                    <label for="">Elija Tipo de Licencia</label>
+                        <select name="licencia" id="tipoLicencia" >
+                            <option value="<?php echo $chofer["tipoLicencia"] ? $chofer["tipoLicencia"]:''; ?>" disabled selected><?php echo $chofer["tipoLicencia"] ? $chofer["tipoLicencia"]:''; ?></option>
                             <option value="Licencia tipo A">Licencia tipo A</option>
                             <option value="Licencia tipo B">Licencia tipo B</option>
                             <option value="Licencia tipo C">Licencia tipo C</option>
@@ -58,39 +69,40 @@
 
                     <div class="campo">
                         <label for="numLicencia">Número Licencia</label>
-                        <input class="cajaTexto" type="text" id="numLicencia" name="numLicencia">
+                        <input class="cajaTexto" type="text" id="numLicencia" name="numLicencia" value="<?php echo $chofer["numLicencia"] ? $chofer["numLicencia"]:'' ; ?>">
                     </div>
 
                     <div class="campo">
                         <label for="correo">Correo Electrónico</label>
-                        <input class="cajaTexto" type="email" id="correo" name="correo">
+                        <input class="cajaTexto" type="email" id="correo" name="correo" value="<?php echo $chofer["correo"]? $chofer["correo"]:''; ?>">
                     </div>
 
                     <div class="campo">
                         <label for="fechaNac">Fecha Nacimiento</label>
-                        <input name="fechaNac" type="date" onclick="this.value = '1970-01-01';" id="fechaNac" />
+                        <input name="fechaNac" type="date" onclick="this.value = '1970-01-01';" id="fechaNac" value="<?php echo $chofer["fechaNac"]? $chofer["fechaNac"]:''; ?>"/>
                     </div>
                 </div>
 
                 <div class="input_100">
                     <div class="campo">
                         <label for="direccion">Dirección Completa</label>
-                        <textarea name="direccion" placeholder="Ingrese la dirección completa del chofer" id="direccion"></textarea>
+                        <textarea name="direccion" id="direccion" value="<?php echo $chofer["direccion"]? $chofer["direccion"]:'';?>"><?php echo $chofer["direccion"]? $chofer["direccion"]:'';?></textarea>
                     </div>
 
                 </div>
+        
             </fieldset>
 
             <div class="campo enviar">
-                <input type="hidden" id="accion" value="crear">
-                <input type="submit" value="GUARDAR">
+                <input type="hidden" id="accion" value="actualizar">
+                <input type="submit" value="ACTUALIZAR">
             </div>
         </form>
     </div>
 
     <script type="text/javascript">
         
-        const formularioChoferes = document.querySelector('#form_choferes');
+        const formularioChoferes = document.querySelector('#actualizar_chofer');
 
         eventListeners();
 
@@ -101,6 +113,8 @@
         function leerFormulario(e){
             e.preventDefault();
 
+     
+            const idChofer = document.querySelector('#idChofer').value;
             const nombre = document.querySelector('#nombre').value;
             const apellidos = document.querySelector('#apellidos').value;
             const telefono = document.querySelector('#telefono').value;
@@ -111,11 +125,14 @@
             const direccion = document.querySelector('#direccion').value;
             const accion= document.querySelector('#accion').value;
 
-            if(nombre === '' || apellidos === '' || telefono === '' || numLicencia === '' || tipoLicencia === '' || correo === '' || fechaNac === '' || direccion === ''){
-                mostrarNotificacion('Todos los campos son obligatorios', 'error');
+            if(nombre === '' || apellidos === '' || telefono === '' || numLicencia === '' || correo === '' || direccion === '' || tipoLicencia === ''){
+                mostrarNotificacion('Todos los Campos Son Obligatorios', 'error');
             }else{
                 
                 const infoChofer = new FormData();
+
+                
+                infoChofer.append('idChofer', idChofer);
                 infoChofer.append('nombre', nombre);
                 infoChofer.append('apellidos', apellidos);
                 infoChofer.append('telefono', telefono);
@@ -127,8 +144,14 @@
                 infoChofer.append('accion', accion);
                 
                 mostrarNotificacion('Los datos se guardaron Correctamente', 'correcto');
-                if(accion === 'crear'){
+
+             
+                let id = parseInt(idChofer)
+                console.log(id)
+
+                if(accion === 'actualizar'){
                     insertarDB(infoChofer);
+                    console.log('DATOS ENVIADOS PARA JSON');
                 }
             }
             
@@ -141,20 +164,19 @@
             const xhr = new XMLHttpRequest();
 
             //abro la conexion
-            xhr.open('POST', 'modelo/modelo-chofer.php', true);
+            xhr.open('POST', `modelo/actualizar.php`, true);
             
             //paso los datos
             xhr.onload = function(){
                 if(this.status === 200){
                     //leo la respuesta de PHP
-
                     const respuesta = JSON.parse ( xhr.responseText );
 
                     console.log(respuesta)
 
-                    setTimeout(() => {
+                     setTimeout(() => {
                         window.location.replace('../../dashboard.php')
-                    }, 3000);
+                     }, 3000);
 
                 }
             }
@@ -183,5 +205,3 @@
 
     </script>
 </body>
-
-</html>

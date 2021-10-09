@@ -54,6 +54,7 @@ label{
 
 .visible{
   opacity: 1;
+  
 }
 
 .correcto{
@@ -180,7 +181,7 @@ th {
 }
 .scroll {
   overflow: scroll;
-  height: 55rem;
+  height: 48rem;
 }
 
 /****** Ruta ******/
@@ -282,11 +283,14 @@ textarea
     border: none;
     border-radius: .8rem;
     background-color: #f0eeee;
-    padding: 1rem;
+    padding: 1.2rem;
     height: 2.8rem;
     margin-top: .5rem;
-    font-size: 1.3rem;
+    font-size: 1.5rem;
+    padding: 1.2rem;
 }
+
+
 
 select{
   border: none;
@@ -294,6 +298,7 @@ select{
   background-color: #f0eeee;
   padding: 1rem;
   margin-top: 1rem;
+  width: 100%;
 }
 
 textarea{
@@ -329,7 +334,7 @@ textarea{
   border: none;
   border-radius: .8rem;
   background-color: #f0eeee;
-  padding: 1rem;
+  padding: 2rem!important;
 }
 
 .form_choferes{
@@ -343,7 +348,7 @@ textarea{
 
 .lChoferes{
   overflow: scroll;
-  height: 55rem;
+  height: 48rem;
 }
 
 .nuevoChofer{
@@ -370,5 +375,21 @@ textarea{
 .btn-borrar{
   color: rgb(177, 30, 30);
   background-color: transparent;
+}
+
+.btn-borrar:hover{
+  cursor: pointer;
+}
+
+.idChofer{
+  color: rgb(21, 9, 196); 
+  font-size: 2.5rem; 
+  font-weight: bold;
+ 
+}
+
+.CampoId{
+  padding: 1.3rem;
+
 }
 
