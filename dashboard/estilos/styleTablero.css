@@ -396,7 +396,6 @@ textarea{
 
 .CampoId{
   padding: 1.3rem;
-
 }
 
 /******** Nuevo Usuario **********/
@@ -427,4 +426,14 @@ textarea{
 
 .exportar{
   text-align: center;
+}
+
+.id{
+  border: none!important;
+  color: rgb(21, 9, 196)!important;
+  font-weight: bold;
+  margin-left: 1.3rem;
+  width: 15%;
+  padding: 1.2rem;
+  font-size: 2rem;
 }

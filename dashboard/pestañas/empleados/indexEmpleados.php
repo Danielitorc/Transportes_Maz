@@ -71,7 +71,7 @@
                             </td>
 
                             <td>
-                                <a href="#" class="btn-editar btn">
+                                <a href="pestañas/empleados/editarEmpleado.php?id=<?php echo $empleado['idEmpleado']; ?>" class="btn-editar btn">
                                     <i class="fas fa-pen-square"></i>
                                 </a>
 
