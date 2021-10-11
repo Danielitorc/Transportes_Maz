@@ -70,7 +70,55 @@
         </form>
     </div>
 
+    <script type="text/javascript">
+        
+        const formularioEmpleados = document.querySelector('#form_empleados');
 
+        eventListeners();
+
+        function eventListeners(){
+            formularioEmpleados.addEventListener('submit', leerFormulario);
+        }
+
+        function leerFormulario(e){
+            e.preventDefault();
+
+            const nombre = document.querySelector('#nombre').value;
+            const apellidos = document.querySelector('#apellidos').value;
+            const telefono = document.querySelector('#telefono').value;
+            const correo = document.querySelector('#correo').value;
+            const fechaNac = document.querySelector('#fechaNac').value;
+            const direccion = document.querySelector('#direccion').value;
+            const accion= document.querySelector('#accion').value;
+
+            if(nombre === '' || apellidos === '' || telefono === '' || correo === '' || fechaNac === '' || direccion === ''){
+                mostrarNotificacion('Todos los campos son Obligatorios', 'error');
+            }else{
+                mostrarNotificacion('Los datos se guardaron Correctamente', 'exito');
+            }
+            
+        }
+
+        function mostrarNotificacion(mensaje, clase){
+            const notificacion = document.createElement('DIV');
+            notificacion.classList.add(clase, 'notificacion');
+            notificacion.textContent = mensaje
+
+            formularioChoferes.insertBefore(notificacion, document.querySelector('form fieldset'));
+
+            setTimeout(() =>{
+                notificacion.classList.add('visible');
+                setTimeout(() => {
+                    notificacion.classList.remove('visible');
+                    setTimeout(() => {
+                        notificacion.remove();
+                    }, 500);
+                    notificacion.remove();
+                }, 3000)
+            }, 100);
+        }
+
+    </script>
 </body>
 
 </html>

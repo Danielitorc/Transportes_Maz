@@ -114,7 +114,7 @@
             if(nombre === '' || apellidos === '' || telefono === '' || numLicencia === '' || tipoLicencia === '' || correo === '' || fechaNac === '' || direccion === ''){
                 mostrarNotificacion('Todos los campos son Obligatorios', 'error');
             }else{
-                mostrarNotificacion('Los datos se guardaron Correctamente', 'exito');
+                mostrarNotificacion('Los datos se guardaron Correctamente', 'correcto');
             }
             
         }
