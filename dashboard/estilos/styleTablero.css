@@ -249,11 +249,14 @@ legend{
   gap: 1.5rem;
   align-items: center;
 }
+
 .campos2{
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   align-items: center;
-  width: 70%;
+  gap: 2rem;
+  width: 100%;
+  margin-top: 2rem;
 }
 
 .campos3 span{
@@ -277,6 +280,7 @@ legend{
 .campo input[type=tel],
 .campo input[type=email],
 .campo input[type=date],
+.campo input[type=password],
 textarea
 {
     width: 100%;
@@ -290,7 +294,9 @@ textarea
     padding: 1.2rem;
 }
 
-
+.campo input[type=date]{
+  height: 3.95rem;
+}
 
 select{
   border: none;
@@ -393,3 +399,32 @@ textarea{
 
 }
 
+/******** Nuevo Usuario **********/
+.form_usuario{
+  margin: 0 auto;
+  width: 60%;
+  margin-top: 3.5rem!important;
+}
+
+.datosUser{
+  margin-bottom: 2.3rem;
+}
+
+.nuevoUsuario{
+  display: grid;
+  grid-template-rows: calc(4fr 1fr);
+  gap: 2.3rem;
+}
+
+.user{
+  padding: 2rem!important;
+}
+
+.lEmpleados{
+  overflow: scroll;
+  height: 48rem;
+}
+
+.exportar{
+  text-align: center;
+}

@@ -55,11 +55,11 @@
         </div>
 
         <div id="paso-3" class="choferes seccion">
-            <?php include'pestañas/choferes/indexChoferes.php' ?>
+            <?php include 'pestañas/choferes/indexChoferes.php' ?>
         </div>
 
         <div id="paso-4" class="empleados seccion">
-            <h2>Empleados</h2>
+        <?php include 'pestañas/empleados/indexEmpleados.php' ?>
         </div>
 
         <div id="paso-5" class="clientes seccion">
