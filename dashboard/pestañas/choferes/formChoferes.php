@@ -101,6 +101,8 @@
         function leerFormulario(e){
             e.preventDefault();
 
+
+            //Declaro variables para cachar los datos de los inputs
             const nombre = document.querySelector('#nombre').value;
             const apellidos = document.querySelector('#apellidos').value;
             const telefono = document.querySelector('#telefono').value;
@@ -111,6 +113,8 @@
             const direccion = document.querySelector('#direccion').value;
             const accion= document.querySelector('#accion').value;
 
+
+            //valido si los campos estan vacios
             if(nombre === '' || apellidos === '' || telefono === '' || numLicencia === '' || tipoLicencia === '' || correo === '' || fechaNac === '' || direccion === ''){
                 mostrarNotificacion('Todos los campos son obligatorios', 'error');
             }else{
@@ -140,7 +144,7 @@
             //creo el objeto
             const xhr = new XMLHttpRequest();
 
-            //abro la conexion
+            //abro la conexion, envio los datos por POST al archivo que almacenara los datos en la BD
             xhr.open('POST', 'modelo/modelo-chofer.php', true);
             
             //paso los datos
