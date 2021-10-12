@@ -42,7 +42,6 @@
                         <th>Teléfono</th>
                         <th>Correo Electrónico</th>
                         <th class="exportar">Exportar</th>
-                        <!--Si el usuario = sin usuario CREAR USUARIO sino no mostrar nada-->
                         <th>Acciones</th>
 
                     </tr>

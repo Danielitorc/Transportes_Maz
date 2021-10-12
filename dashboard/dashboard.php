@@ -35,7 +35,10 @@
                     <li data-paso="4">Empleados</li>
                 </a>
                 <a class="btn-lateral">
-                    <li data-paso="5">Clientes</li>
+                    <li data-paso="5" style="font-size: 2rem;">Generar Usuario</li>
+                </a>
+                <a class="btn-lateral">
+                    <li data-paso="6">Clientes</li>
                 </a>
             </ul>
         </section>
@@ -63,9 +66,15 @@
         </div>
 
         <div id="paso-5" class="clientes seccion">
+        <?php include 'pestañas/usuarios/indexUser.php' ?>
+
+        </div>
+
+        <div id="paso-6" class="clientes seccion">
             <h2>Clientes</h2>
 
         </div>
+
     </div>
 
     <script src="js/paginacion.js"></script>
