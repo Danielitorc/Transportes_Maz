@@ -112,17 +112,61 @@
             const accion= document.querySelector('#accion').value;
 
             if(nombre === '' || apellidos === '' || telefono === '' || numLicencia === '' || tipoLicencia === '' || correo === '' || fechaNac === '' || direccion === ''){
-                mostrarNotificacion('Todos los campos son Obligatorios', 'error');
+                mostrarNotificacion('Todos los campos son obligatorios', 'error');
             }else{
+                
+                const infoChofer = new FormData();
+                infoChofer.append('nombre', nombre);
+                infoChofer.append('apellidos', apellidos);
+                infoChofer.append('telefono', telefono);
+                infoChofer.append('tipoLicencia', tipoLicencia);
+                infoChofer.append('numLicencia', numLicencia);
+                infoChofer.append('correo', correo);
+                infoChofer.append('fechaNac', fechaNac);
+                infoChofer.append('direccion', direccion);
+                infoChofer.append('accion', accion);
+                
                 mostrarNotificacion('Los datos se guardaron Correctamente', 'correcto');
+                if(accion === 'crear'){
+                    insertarDB(infoChofer);
+                }
             }
             
+        }
+
+        function insertarDB(datos){
+            //llamado ajax
+
+            //creo el objeto
+            const xhr = new XMLHttpRequest();
+
+            //abro la conexion
+            xhr.open('POST', 'modelo/modelo-chofer.php', true);
+            
+            //paso los datos
+            xhr.onload = function(){
+                if(this.status === 200){
+                    //leo la respuesta de PHP
+
+                    const respuesta = JSON.parse ( xhr.responseText );
+
+                    console.log(respuesta)
+
+                    setTimeout(() => {
+                        window.location.replace('../../dashboard.php')
+                    }, 3000);
+
+                }
+            }
+
+            //envio los datos
+            xhr.send(datos);
         }
 
         function mostrarNotificacion(mensaje, clase){
             const notificacion = document.createElement('DIV');
             notificacion.classList.add(clase, 'notificacion');
-            notificacion.textContent = mensaje
+            notificacion.textContent = mensaje;
 
             formularioChoferes.insertBefore(notificacion, document.querySelector('form fieldset'));
 
@@ -133,7 +177,6 @@
                     setTimeout(() => {
                         notificacion.remove();
                     }, 500);
-                    notificacion.remove();
                 }, 3000)
             }, 100);
         }
