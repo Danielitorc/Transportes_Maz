@@ -185,12 +185,19 @@ th {
 }
 
 /****** Ruta ******/
-.ruta {
-  margin: 0 2rem;
+.centrar-texto{
+  text-align: center;
 }
 
-.ruta h2 {
-  text-align: center;
+.campos5{
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 1.2rem;
+  align-items: center;
+}
+
+.formServ{
+  margin-top: -2.6rem!important;
 }
 
 /****** empleados ******/
@@ -248,6 +255,7 @@ legend{
   grid-template-columns: repeat(3, 1fr);
   gap: 1.5rem;
   align-items: center;
+  margin-top: 2rem;
 }
 
 .campos2{

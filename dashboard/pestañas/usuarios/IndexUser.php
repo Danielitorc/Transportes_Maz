@@ -17,7 +17,7 @@
     <div class="tabla-pendientes">
         <?php include 'funciones/funcionesEmp.php'; ?>
 
-        <h2>Listado de Choferes</h2>
+        <h2>Listado Empleados sin Usuario</h2>
         <div class="lChoferes">
             <table id="listado-usuarios">
                 <thead>
@@ -47,7 +47,6 @@
 
                         <td>
                             <a href="pestañas/usuarios/agregarUser.php?id=<?php echo $empleado['idEmpleado']; ?>" class="btn_nuevoChofer btn"><i class="far fa-plus-square"></i></a>
-
                         </td>
                     </tr>
 

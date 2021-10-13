@@ -54,7 +54,7 @@
         </div>
 
         <div id="paso-2" class="ruta seccion">
-            <?php include 'pestañas/rutas/asignarRuta.php';?>
+            <!-- <?php //include 'pestañas/servicios/indexServicios.php';?> -->
         </div>
 
         <div id="paso-3" class="choferes seccion">
@@ -65,7 +65,7 @@
         <?php include 'pestañas/empleados/indexEmpleados.php' ?>
         </div>
 
-        <div id="paso-5" class="clientes seccion">
+        <div id="paso-5" class="usuarios seccion">
         <?php include 'pestañas/usuarios/indexUser.php' ?>
 
         </div>

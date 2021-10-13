@@ -68,7 +68,7 @@ function insertarBD(datos) {
             console.log(respuesta.idSolicitud);
 
             setTimeout(() => {
-                location.assign(`../pdf/folio_cotizacion.php?id=${respuesta.datos.id_insert_cot}`)
+                window.location.replace(`../pdf/folio_cotizacion.php?id=${respuesta.datos.id_insert_cot}`)
             }, 3500);
 
         }
