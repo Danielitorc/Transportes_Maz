@@ -164,7 +164,7 @@
             const xhr = new XMLHttpRequest();
 
             //abro la conexion
-            xhr.open('POST', `modelo/actualizarEmp.php`, true);
+            xhr.open('POST', `modelo/actualizar.php`, true);
             
             //paso los datos
             xhr.onload = function(){

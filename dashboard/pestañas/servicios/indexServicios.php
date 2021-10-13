@@ -1,6 +1,6 @@
 <body>
 
-    <div class="tabla-pendientes contenedor">
+    <div class="tabla-pendientes">
 
         <h2>Cotizaciones para Asignar Servicio</h2>
         <div class="lEmpleados">
@@ -22,7 +22,7 @@
                 <tbody>
                     <tr>
 
-                        <?php include 'funciones/funcionesServicios.php';
+                        <?php include 'funciones/mostrarCotizaciones.php';
                         $cotizaciones = obtenerCotizaciones();
                         if ($cotizaciones->num_rows) {
                             foreach ($cotizaciones as $cotizacion) {
