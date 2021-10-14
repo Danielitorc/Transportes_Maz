@@ -24,19 +24,32 @@ $cotizacion = $resultado->fetch_assoc();
 
 <div class="contenedor">
 
-    
-    <div class="CampoId">
-        <label class="idChofer">IdCotización:</label>
-        <input class="id" type="text" value="<?php echo $cotizacion["idCotizacion"]; ?>">
-        </input>
+
+    <div class="campos2">
+        <div class="CampoId">
+            <label class="idChofer">Solicitud:</label>
+            <input class="id" type="text"
+            id="idSolicitud"
+            value="<?php echo $cotizacion["id"]; ?>">
+            </input>
+        </div>
+        <div class="CampoId">
+            <label class="idChofer">Cotización:</label>
+            <input class="id" type="text"
+            id="idCotizacion"
+            value="<?php echo $cotizacion["idCotizacion"]; ?>">
+            </input>
+        </div>
     </div>
 
-    <form action="#" class="formServ" id="datosCot">
+
+    <div action="#" class="formServ" id="datosCot">
         <fieldset>
             <div class="campos4">
                 <div class="campo">
                     <label>Nombre Cliente:</label>
-                    <input readonly="readonly"  class="cajaTexto" type="text" value="<?php echo $cotizacion["nombre"] ." ".$cotizacion["apellidos"]; ?>">
+                    <input readonly="readonly"  class="cajaTexto" type="text" 
+                    value="<?php echo $cotizacion["nombre"] ." ".$cotizacion["apellidos"]; ?>">
                     </input>
                 </div>
 
@@ -59,7 +72,7 @@ $cotizacion = $resultado->fetch_assoc();
                 </div>
             </div>
         </fieldset>
-    </form>
+    </div>
 
     <form action="#" class="" id="servicio">
         <fieldset>
@@ -98,12 +111,11 @@ $cotizacion = $resultado->fetch_assoc();
 
                 <div class="campo">
                     <label for="">Seleccione Chofer:</label>
-                    <select name="" id="">
+                    <select name="chofer" id="chofer">
                     <?php 
                         $choferes =  chofer();
                             foreach($choferes as $chofer){
-                    ?>
-                    
+                    ?> 
                         <option value="<?php echo $chofer['idChofer']?>"><?php echo $chofer['nombre']?></option>
                         
                     <?php } ?>
@@ -119,6 +131,92 @@ $cotizacion = $resultado->fetch_assoc();
         </div>
     </form>
 
-
-
 </div>
+
+<script type="text/javascript">
+    const formServicios = document.querySelector('#servicio');
+
+    eventListeners();
+
+    function eventListeners(){
+        formServicios.addEventListener('submit', leerFormulario);
+    }
+
+    function leerFormulario(e){
+        e.preventDefault();
+
+        const empresaEntrega = document.querySelector('#empresaEntrega').value;
+        const nombreEntrega = document.querySelector('#nombreEntrega').value;
+        const puesto = document.querySelector('#puesto').value;
+        const telefono = document.querySelector('#telefono').value;
+        const chofer = document.querySelector('#chofer').value;
+        const idCotizacion = document.querySelector('#idCotizacion').value;
+        const idSolicitud = document.querySelector('#idSolicitud').value;
+        const accion = document.querySelector('#accion').value;
+        
+        if(empresaEntrega == '' || nombreEntrega== '' || puesto == '' || telefono == '' || chofer == ''){
+            mostrarNotificacion('Todos los campos son obligatorios', 'error');
+        }else{
+            const infoServicio = new FormData();
+            infoServicio.append('empresaEntrega', empresaEntrega);
+            infoServicio.append('nombreEntrega', nombreEntrega);
+            infoServicio.append('puesto', puesto);
+            infoServicio.append('telefono', telefono);
+            infoServicio.append('chofer', chofer);
+            infoServicio.append('idCotizacion', idCotizacion);
+            infoServicio.append('idSolicitud', idSolicitud);
+            infoServicio.append('accion', accion);
+
+            //console.log(...infoServicio);
+            
+
+            if(accion == 'crearServicio'){
+                
+                insertarDB(infoServicio);
+            }
+
+        }
+
+    }
+
+    function insertarDB(datos){
+        //llamado ajax
+        //Creo el objeto
+        const xhr = new XMLHttpRequest();
+
+        //abro la conexion
+        xhr.open("POST", 'modelos/modelo-servicio.php', true);
+
+        //paso los datos al modelo para insertarlos a la BD
+        xhr.onload = function(){
+            if(this.status === 200){
+                mostrarNotificacion('Los datos se guardaron Correctamente', 'correcto');
+                const respuesta = JSON.parse ( xhr.responseText );
+
+                console.log(respuesta)
+            }
+        }
+
+         //envio los datos
+         xhr.send(datos);
+    }
+
+    function mostrarNotificacion(mensaje, clase){
+            const notificacion = document.createElement('DIV');
+            notificacion.classList.add(clase, 'notificacion');
+            notificacion.textContent = mensaje;
+
+            formServicios.insertBefore(notificacion, document.querySelector('form fieldset'));
+
+            setTimeout(() =>{
+                notificacion.classList.add('visible');
+                setTimeout(() => {
+                    notificacion.classList.remove('visible');
+                    setTimeout(() => {
+                        notificacion.remove();
+                    }, 500);
+                }, 3000)
+            }, 100);
+        }
+
+</script>
