@@ -167,9 +167,6 @@ $cotizacion = $resultado->fetch_assoc();
             infoServicio.append('idSolicitud', idSolicitud);
             infoServicio.append('accion', accion);
 
-            //console.log(...infoServicio);
-            
-
             if(accion == 'crearServicio'){
                 
                 insertarDB(infoServicio);
@@ -193,7 +190,12 @@ $cotizacion = $resultado->fetch_assoc();
                 mostrarNotificacion('Los datos se guardaron Correctamente', 'correcto');
                 const respuesta = JSON.parse ( xhr.responseText );
 
-                console.log(respuesta)
+                console.log(respuesta);
+
+                //enviar primero a que se genere el PDF y despues redireccionar al dashboard
+                setTimeout(() => {
+                    window.location.replace('pdf/pdfServicio.php');
+                }, 4000);
             }
         }
 
