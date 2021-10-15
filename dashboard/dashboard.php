@@ -35,7 +35,10 @@
                     <li data-paso="4">Empleados</li>
                 </a>
                 <a class="btn-lateral">
-                    <li data-paso="5">Clientes</li>
+                    <li data-paso="5" style="font-size: 2rem;">Generar Usuario</li>
+                </a>
+                <a class="btn-lateral">
+                    <li data-paso="6">Clientes</li>
                 </a>
             </ul>
         </section>
@@ -51,21 +54,27 @@
         </div>
 
         <div id="paso-2" class="ruta seccion">
-            <?php include 'pestañas/rutas/asignarRuta.php';?>
+            <?php include 'pestañas/servicios/indexServicios.php';?>
         </div>
 
         <div id="paso-3" class="choferes seccion">
-            <?php include'pestañas/choferes/indexChoferes.php' ?>
+            <?php include 'pestañas/choferes/indexChoferes.php' ?>
         </div>
 
         <div id="paso-4" class="empleados seccion">
-            <h2>Empleados</h2>
+        <?php include 'pestañas/empleados/indexEmpleados.php' ?>
         </div>
 
-        <div id="paso-5" class="clientes seccion">
+        <div id="paso-5" class="usuarios seccion">
+        <?php include 'pestañas/usuarios/indexUser.php' ?>
+
+        </div>
+
+        <div id="paso-6" class="clientes seccion">
             <h2>Clientes</h2>
 
         </div>
+
     </div>
 
     <script src="js/paginacion.js"></script>
