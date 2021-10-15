@@ -15,7 +15,7 @@
         $direccion = filter_var($_POST['direccion'], FILTER_SANITIZE_STRING);
 
         try {
-            $stmt = $conexion->prepare("INSERT INTO choferes (nombre, apellidos, telefono, tipoLicencia, numLicencia, correo, fechaNac, direccion) VALUES (?,?,?,?,?,?,?,?)");
+            $stmt = $conexion->prepare("INSERT INTO choferes (nombreCh, apellidosCh, telefonoCh, tipoLicencia, numLicencia, correoCh, fechaNacCh, direccionCh) VALUES (?,?,?,?,?,?,?,?)");
 
             $stmt->bind_param("ssssssss", $nombre, $apellidos, $telefono, $tipoLicencia, $numLicencia, $correo, $fechaNac, $direccion);
 

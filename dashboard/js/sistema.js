@@ -48,8 +48,6 @@ function leerformulario(e){
         }
 }
 
-console.log('hola sistema')
-
 function insertarBD(datos) {
     //llamado ajax
 
@@ -70,7 +68,7 @@ function insertarBD(datos) {
             setTimeout(() => {
                 window.location.replace(`../pdf/folio_cotizacion.php?id=${respuesta.datos.id_insert_cot}`)
             }, 3500);
-
+            document.querySelector('form').reset();
         }
     }
 

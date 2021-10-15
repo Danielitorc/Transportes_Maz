@@ -9,13 +9,14 @@ if(isset($_POST['accion']) == 'crearServicio'){
     $nombreEntrega = filter_var($_POST['nombreEntrega'], FILTER_SANITIZE_STRING);
     $puesto = filter_var($_POST['puesto'], FILTER_SANITIZE_STRING);
     $telefono = filter_var($_POST['telefono'], FILTER_SANITIZE_STRING);
+    $placas = filter_var($_POST['placas'], FILTER_SANITIZE_STRING);
     $idChofer = filter_var($_POST['chofer'], FILTER_VALIDATE_INT);
 
     try {
-        $stmt = $conexion->prepare("INSERT INTO servicios (idCotizacion, idSolicitud, empresaEntrega, nombreEntrega, puesto, telefono, idChofer) 
-        VALUES (?,?,?,?,?,?,?)");
+        $stmt = $conexion->prepare("INSERT INTO servicios (idCotizacion, idSolicitud, empresaEntrega, nombreEntrega, puesto, telefonoEnt, idChofer, placas) 
+        VALUES (?,?,?,?,?,?,?,?)");
 
-        $stmt->bind_param("iissssi", $idCotizacion, $idSolicitud, $empresaEntrega, $nombreEntrega, $puesto, $telefono, $idChofer);
+        $stmt->bind_param("iissssis", $idCotizacion, $idSolicitud, $empresaEntrega, $nombreEntrega, $puesto, $telefono, $idChofer, $placas);
 
         $stmt->execute();
         
@@ -33,6 +34,7 @@ if(isset($_POST['accion']) == 'crearServicio'){
                   'puesto' => $puesto,
                   'telefono' => $telefono,
                   'idChofer' => $idChofer,
+                  'placas' => $placas,
                   'id_insert_servicio' => $stmt->insert_id
                 )
             );

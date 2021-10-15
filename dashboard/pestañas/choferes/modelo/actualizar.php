@@ -16,7 +16,7 @@ if (isset($_POST['accion']) == 'actualizar') {
 
     $id = filter_var($_POST['idChofer'], FILTER_VALIDATE_INT);
     try {
-        $stmt = $conexion->prepare("UPDATE choferes SET nombre = ?, apellidos = ?, telefono = ?, tipoLicencia = ?, numLicencia = ?, correo = ?, fechaNac = ?, direccion = ? WHERE idChofer = ?");
+        $stmt = $conexion->prepare("UPDATE choferes SET nombreCh = ?, apellidosCh = ?, telefonoCh = ?, tipoLicencia = ?, numLicencia = ?, correoCh = ?, fechaNacCh = ?, direccionCh = ? WHERE idChofer = ?");
         $stmt->bind_param('ssssssssi',$nombre, $apellidos, $telefono, $tipoLicencia, $numLicencia, $correo, $fechaNac, $direccion, $id);
         $stmt->execute();
 

@@ -36,18 +36,20 @@
                 <div class="campos3">
                     <div class="campo">
                         <label for="nombre">Nombre</label>
-                        <input class="cajaTexto" type="text" id="nombre" name="nombre" value="<?php echo $chofer["nombre"] ? $chofer["nombre"]:'';?>"></input>
+                        <input class="cajaTexto" type="text" id="nombre" name="nombre" 
+                        value="<?php echo $chofer["nombreCh"] ? $chofer["nombreCh"]:'';?>"></input>
                     </div>
 
                     <div class="campo">
                         <label for="apellidos">Apellidos</label>
-                        <input class="cajaTexto" type="text" id="apellidos" name="apellidos" value="<?php echo $chofer["apellidos"] ? $chofer["apellidos"]:'';?>">
+                        <input class="cajaTexto" type="text" id="apellidos" name="apellidos" 
+                        value="<?php echo $chofer["apellidosCh"] ? $chofer["apellidosCh"]:'';?>">
                     </div>
 
                     <div class="campo">
                         <label for="telefono">Teléfono</label>
                         <input class="cajaTexto" type="tel" id="telefono" name="telefono" 
-                        value="<?php echo $chofer["telefono"] ? $chofer["telefono"]:'';?>">
+                        value="<?php echo $chofer["telefonoCh"] ? $chofer["telefonoCh"]:'';?>">
                     </div>
                     
 
@@ -69,24 +71,29 @@
 
                     <div class="campo">
                         <label for="numLicencia">Número Licencia</label>
-                        <input class="cajaTexto" type="text" id="numLicencia" name="numLicencia" value="<?php echo $chofer["numLicencia"] ? $chofer["numLicencia"]:'' ; ?>">
+                        <input class="cajaTexto" type="text" id="numLicencia" name="numLicencia" 
+                        value="<?php echo $chofer["numLicencia"] ? $chofer["numLicencia"]:'' ; ?>">
                     </div>
 
                     <div class="campo">
                         <label for="correo">Correo Electrónico</label>
-                        <input class="cajaTexto" type="email" id="correo" name="correo" value="<?php echo $chofer["correo"]? $chofer["correo"]:''; ?>">
+                        <input class="cajaTexto" type="email" id="correo" name="correo" 
+                        value="<?php echo $chofer["correoCh"]? $chofer["correoCh"]:''; ?>">
                     </div>
 
                     <div class="campo">
                         <label for="fechaNac">Fecha Nacimiento</label>
-                        <input name="fechaNac" type="date" onclick="this.value = '1970-01-01';" id="fechaNac" value="<?php echo $chofer["fechaNac"]? $chofer["fechaNac"]:''; ?>"/>
+                        <input name="fechaNac" type="date" onclick="this.value = '1970-01-01';" id="fechaNac" 
+                        value="<?php echo $chofer["fechaNacCh"]? $chofer["fechaNacCh"]:''; ?>"/>
                     </div>
                 </div>
 
                 <div class="input_100">
                     <div class="campo">
                         <label for="direccion">Dirección Completa</label>
-                        <textarea name="direccion" id="direccion" value="<?php echo $chofer["direccion"]? $chofer["direccion"]:'';?>"><?php echo $chofer["direccion"]? $chofer["direccion"]:'';?></textarea>
+                        <textarea name="direccion" id="direccion" 
+                        value="<?php echo $chofer["direccionCh"]? $chofer["direccionCh"]:'';?>">
+                        <?php echo $chofer["direccionCh"]? $chofer["direccionCh"]:'';?></textarea>
                     </div>
 
                 </div>
@@ -140,7 +147,7 @@
                 infoChofer.append('numLicencia', numLicencia);
                 infoChofer.append('correo', correo);
                 infoChofer.append('fechaNac', fechaNac);
-                infoChofer.append('direccion', direccion);
+                infoChofer.append('direccion', direccion.trim(direccion));
                 infoChofer.append('accion', accion);
                 
                 mostrarNotificacion('Los datos se guardaron Correctamente', 'correcto');
@@ -153,6 +160,7 @@
                     insertarDB(infoChofer);
                     console.log('DATOS ENVIADOS PARA JSON');
                 }
+                document.querySelector('form').reset();
             }
             
         }

@@ -78,13 +78,13 @@ header {
 }
 
 h2.name {
-  font-size: 1.4em;
+  font-size: 1.2em;
   font-weight: normal;
   margin: 0;
 }
 
 #invoice {
-  margin-top: -4.2em;
+  margin-top: -5.8em;
   float: right;
   text-align: right;
 }
@@ -249,4 +249,8 @@ table tfoot tr:last-child td {
 
 table tfoot tr td:first-child {
   border: none;
+}
+
+.line_height{
+  line-height: 2rem;
 }

@@ -108,6 +108,7 @@
                  if(accion === 'crear'){
                      insertarDB(infoEmpleado);
                  }
+                 document.querySelector('form').reset();
             }
             
         }

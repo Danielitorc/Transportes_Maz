@@ -94,7 +94,7 @@ $cotizacion = $resultado->fetch_assoc();
                 </div>
             </div>
 
-            <div class="campos3">
+            <div class="campos2">
                 <div class="campo">
                     <label for="puesto">Puesto de la Persona:</label>
                     <input class="cajaTexto" type="text" 
@@ -109,6 +109,17 @@ $cotizacion = $resultado->fetch_assoc();
                     </input>
                 </div>
 
+            </div>
+
+            <div class="campos2">
+
+                <div class="campo">
+                    <label for="placas">Placas de la Unidad:</label>
+                    <input class="cajaTexto" type="text"
+                    id="placas" name="placas">
+                    </input>
+                </div>
+
                 <div class="campo">
                     <label for="">Seleccione Chofer:</label>
                     <select name="chofer" id="chofer">
@@ -116,14 +127,16 @@ $cotizacion = $resultado->fetch_assoc();
                         $choferes =  chofer();
                             foreach($choferes as $chofer){
                     ?> 
-                        <option value="<?php echo $chofer['idChofer']?>"><?php echo $chofer['nombre']?></option>
+                        <option value="<?php echo $chofer['idChofer']?>"><?php echo $chofer['nombreCh']?></option>
                         
                     <?php } ?>
                     </select>
-                    
+                        
                 </div>
 
             </div>
+
+
         </fieldset>
         <div class="campo enviar">
             <input type="hidden" id="accion" value="crearServicio">
@@ -149,18 +162,20 @@ $cotizacion = $resultado->fetch_assoc();
         const nombreEntrega = document.querySelector('#nombreEntrega').value;
         const puesto = document.querySelector('#puesto').value;
         const telefono = document.querySelector('#telefono').value;
+        const placas = document.querySelector('#placas').value;
         const chofer = document.querySelector('#chofer').value;
         const idCotizacion = document.querySelector('#idCotizacion').value;
         const idSolicitud = document.querySelector('#idSolicitud').value;
         const accion = document.querySelector('#accion').value;
         
-        if(empresaEntrega == '' || nombreEntrega== '' || puesto == '' || telefono == '' || chofer == ''){
+        if(empresaEntrega == '' || nombreEntrega== '' || puesto == '' || telefono == '' || chofer == '' || placas ==''){
             mostrarNotificacion('Todos los campos son obligatorios', 'error');
         }else{
             const infoServicio = new FormData();
             infoServicio.append('empresaEntrega', empresaEntrega);
             infoServicio.append('nombreEntrega', nombreEntrega);
             infoServicio.append('puesto', puesto);
+            infoServicio.append('placas', placas);
             infoServicio.append('telefono', telefono);
             infoServicio.append('chofer', chofer);
             infoServicio.append('idCotizacion', idCotizacion);
@@ -192,10 +207,13 @@ $cotizacion = $resultado->fetch_assoc();
 
                 console.log(respuesta);
 
+                location.assign(`pdf/pdfServicio.php?idServicio=${respuesta.datos.id_insert_servicio}`)
+
                 //enviar primero a que se genere el PDF y despues redireccionar al dashboard
-                setTimeout(() => {
-                    window.location.replace('pdf/pdfServicio.php');
-                }, 4000);
+                 setTimeout(() => {
+                     window.location.replace('pdf/pdfServicio.php');
+                 }, 3000);
+                 document.querySelector('form').reset();
             }
         }
 

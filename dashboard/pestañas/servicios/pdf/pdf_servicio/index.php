@@ -1,6 +1,6 @@
 <?php
 
-  function getPlantilla($cotizacion){
+  function getPlantilla($servicio){
 
     date_default_timezone_set("America/Mexico_City");
     $date = date('d-m-Y');  
@@ -17,7 +17,7 @@
   <body>
   <header class="clearfix">
   <div id="logo">
-    <img src="../../img/logo.png" width="40%" height="44">
+    <img src="../../../../img/logo.png" width="40%" height="44">
   </div>
 
   <div id="company">
@@ -33,46 +33,69 @@
     <div id="details" class="clearfix">
         
     <div id="client">';
-      foreach($cotizacion as $sol){
+      foreach($servicio as $pdf){
 
       $plantilla .= '
-      <div class="address">Folio de Solicitud: '. $sol["id"].'</div>
-      <h2 class="name">'. $sol["nombre"].' '. $sol["apellidos"].'</h2>
-      <div class="address">'. $sol["empresa"].'</div>
-      <div class="email"><a href="mailto:company@example.com">'. $sol["correo"].'</a></div>
+      <div class="line_height">
+        <h2 class="name"><span class="negrita">Cliente: </span>'. $pdf["nombre"].' '. $pdf["apellidos"].'</h2>
+        <div class="address"><span class="negrita">Empresa: </span>'. $pdf["empresa"].'</div>
+        <div class="address"><span class="negrita">Teléfono: </span>'. $pdf["telefono"].'</div>
+      </div>
     </div>
   
 
     <div id="invoice">
-      <h1>FOLIO DE COTIZACIÓN '. $sol["idCotizacion"].'</h1>
+      <h1>FOLIO DE SERVICIO: '. $pdf["idServicio"].'</h1>
+      <div class="address">Solicitud: '. $pdf["idSolicitud"].'</div>
+      <div class="address">Cotización: '. $pdf["idCotizacion"].'</div>
       <div class="date">Fecha: '.$date.'</div>
     </div>
   </div>
 
+
+
+  <!-- Datos del chofer -->
   <table border="0" cellspacing="0" cellpadding="0" class="principal">
-  <!-- Titulos tabla  -->
-  <thead>
-    <tr>
-      <th class="titulo_tabla">Datos de recolección</th>
-    </tr>
-  </thead>
+
+    <thead>
+      <tr>
+        <th class="titulo_tabla">Datos del Chofer</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr>
+        <td class="contenido_tabla datos"> 
+        <span class="negrita"> Nombre del chofer: </span>'. $pdf["nombreCh"].' '. $pdf["apellidosCh"].'
+        <p><span class="negrita">Número de licencia: </span>'.$pdf["numLicencia"].'</p>
+        <p><span class="negrita">Unidad Tipo: </span>'.$pdf["unidad"].' <span class="negrita">Placas: </span>'.$pdf["placas"].' </p>
+        </td>
+      </tr>
+    </tbody>
+
+  </table>
 
 
+  <!-- Datos de Recoleccion -->
+  <table border="0" cellspacing="0" cellpadding="0" class="principal">
 
-  <tbody>
-    <tr>
-      <td class="contenido_tabla datos"> '.$sol["datosRec"].' 
-      el día <span class="negrita">'.$sol["fecha"].' </span> 
-      a las <span class="negrita">'.$sol["hora"].'</span> </p> 
+    <thead>
+      <tr>
+        <th class="titulo_tabla">Datos de recolección</th>
+      </tr>
+    </thead>
 
-      <span class="negrita">Sobre su Mercanía: </span>'.$sol["adicionales"].'
-      
-      
-      </td>
-    </tr>
-  </tbody>
+    <tbody>
+      <tr>
+        <td class="contenido_tabla datos"> 
+        <p>'.$pdf["datosRec"].' </p>
+        <p>El día: '.$pdf["fecha"].' a las '.$pdf["hora"].'</p>
+        <p><span class="negrita">Sobre la mercancía: </span>'.$pdf["adicionales"].'</p>
+        </td>
+      </tr>
+    </tbody>
 
-</table>
+  </table>
 
   <!-- Tabla Datos de entrega-->
   <table border="0" cellspacing="0" cellpadding="0">
@@ -85,103 +108,44 @@
 
     <tbody>
       <tr>
-        <td class="contenido_tabla datos">'.$sol["datosEnt"].'</td>
+        <td class="contenido_tabla datos"> 
+          <p>
+            <span class="negrita">Entregar en: </span>'.$pdf["datosEnt"].'
+            <p><span class="negrita">Seguro: </span>'.$pdf["asegurar"].'</p>';
+            if($pdf["comentariosManiobras"] == ''){
+              $plantilla .= '
+              <span class="negrita">Maniobras: </span>No requeridas ';
+            }else{
+              $plantilla .= '
+              <span class="negrita">Maniobras: </span>'.$pdf["adicionales"].' ';
+            }
+    
+            $plantilla .= '
+
+        </td>
       </tr>
     </tbody>
   </table>
 
+        
+  <!-- Datos de Referencia -->
+  <table border="0" cellspacing="0" cellpadding="0">
+    <!-- Titulos tabla  -->
+    <thead>
+      <tr>
+        <th class="titulo_tabla">Referencias de Entrega</th>
+      </tr>
+    </thead>
 
-
-
-<table border="0" cellspacing="0" cellpadding="0">
-<thead>
-  <tr class"negrita">
-    <th class="no ">#</th>
-    <th class="desc negrita">DESCRIPCIÓN</th>
-    <th class="total negrita">COSTO</th>
-  </tr>
-</thead>
-<tbody>
-  <tr>
-    <td class="no">01</td>
-    <td class="desc"><h3>Costo Flete</h3><p>Unidad tipo <span class="negrita">'.$sol["unidad"].' </span> </td>
-    <td class="total negrita">$ '.number_format($sol["costoFlete"],2).' </td>
-  </tr>
-
-  <tr>
-    <td class="no">02</td> ';
-
-        $subtotal =  $sol["costoManiobras"] +  $sol["costoFlete"] +  $sol["costoSeguro"];
-        $iva = ($subtotal * .16);
-        $total = $subtotal + $iva;
-
-    if($sol["maniobras"]=='No Requieridas'){
-      $maniobras = "No requiere Maniobras";
-      $sol["costoManiobras"]=0;
-      $plantilla .='
-      <td class="desc">'.$maniobras.'</td>
-      <td class="total negrita">$ '.number_format($sol["costoManiobras"],2).'</td>';
-    }else{
-      $sol["costoManiobras"] = $sol["costoManiobras"];
-      $plantilla .='
-      <td class="desc"><h3>Maniobras</h3><p>'.$sol["comentariosManiobras"].'</p></td>
-      <td class="total negrita">$ '.number_format($sol["costoManiobras"],2).'</td>';
-    }
-    $plantilla .='
-  </tr>
-
-  <tr>
-  <td class="no">02</td> ';
-  if($sol["asegurar"]=='Sin seguro'){
-    $seguro = "No requiere Seguro";
-    $sol["costoSeguro"]=0;
-    $plantilla .='
-    <td class="desc"><h3>Seguro</h3> '.$seguro.'</td>
-    <td class="total negrita">$ '.number_format($sol["costoSeguro"],2).'</td>';
-  }else{
-    $sol["costoSeguro"] = $sol["costoSeguro"];
-    $plantilla .='
-    <td class="desc"><h3>Seguro</h3><p>El costo del seguro es del 1.5% sobre el valor de la mercanía</p></td>
-    <td class="total negrita">$ '.number_format($sol["costoSeguro"],2).'</td>';
-  }
-  $plantilla .='
-</tr>
-</tbody>
-
-<tfoot>
-  <tr>
-    <td class="izq" colspan="2">SUBTOTAL</td>
-    <td>$ '.number_format($subtotal,2).'</td>
-  </tr>
-  <tr>
-
-    <td colspan="2">IVA 16%</td>
-    <td>$ '.number_format($iva,2).'</td>
-  </tr>
-  <tr>
-
-    <td class="negrita" colspan="2">TOTAL</td>
-    <td class="negrita" >$ '.number_format($total,2).'</td>
-  </tr>
-</tfoot>
-
-</table>
-
-<!-- Tabla Comentaios del cliente-->
-<table border="0" cellspacing="0" cellpadding="0" class="dentro">
-  <thead>
-  <tr>
-    <th class="titulo_tabla">Comentarios Para el cliente</th>
-  </tr>
-  </thead>
-
-  <tbody>
-  <tr>
-    <td class="contenido_tabla datos">'.$sol["comentariosTM"].'</td>
-  </tr>
-  </tbody>
-
-</table>
+    <tbody>
+      <tr>
+        <td class="contenido_tabla datos"> 
+        <span class="negrita">Empresa donde se entregara: </span>'.$pdf["empresaEntrega"].'
+        <p><span class="negrita">Persona que recibira: </span>'.$pdf["nombreEntrega"].' <span class="negrita"> Puesto: </span>'.$pdf["puesto"].'<span class="negrita"> Teléfono: </span>'.$pdf["telefonoEnt"].'</p>
+        </td>
+      </tr>
+    </tbody>
+  </table>
 
       
     </main>

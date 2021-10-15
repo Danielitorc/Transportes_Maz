@@ -151,7 +151,7 @@
                     setTimeout(() => {
                         window.location.replace('../../dashboard.php')
                     }, 3000);
-
+                    document.querySelector('form').reset();
                 }
             }
 

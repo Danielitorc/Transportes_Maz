@@ -114,7 +114,7 @@ $empleado = $resultado->fetch_assoc();
             infoEmpleado.append('telefono', telefono);
             infoEmpleado.append('correo', correo);
             infoEmpleado.append('fechaNac', fechaNac);
-            infoEmpleado.append('direccion', direccion);
+            infoEmpleado.append('direccion', direccion.trim(direccion));
             infoEmpleado.append('accion', accion);
 
             let id = parseInt(idEmpleado)
@@ -124,6 +124,7 @@ $empleado = $resultado->fetch_assoc();
             if (accion === 'actualizar') {
                 actualizarEmpleado(infoEmpleado);
             }
+            document.querySelector('form').reset();
         }
 
     }

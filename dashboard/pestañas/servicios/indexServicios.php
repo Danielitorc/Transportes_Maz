@@ -38,6 +38,7 @@
                             <td><?php echo $cotizacion['hora']; ?></td>
                             <td class="centrar-texto">
                                 <a 
+                                    target="_blank"
                                     data-id="<?php echo $cotizacion['idCotizacion']; ?>"
                                     href="pestañas/servicios/agregarServicio.php?id=<?php echo $cotizacion['idCotizacion']; ?>" 
                                     class="btn_nuevoChofer btn" style="font-weight: bold;">

@@ -61,12 +61,12 @@
                             
                             
                             <td><?php echo $chofer['idChofer'] ;?></td>
-                            <td><?php echo $chofer['nombre'] ;?></td>
-                            <td><?php echo $chofer['apellidos'];?></td>
-                            <td><?php echo $chofer['telefono'];?></td>
+                            <td><?php echo $chofer['nombreCh'] ;?></td>
+                            <td><?php echo $chofer['apellidosCh'];?></td>
+                            <td><?php echo $chofer['telefonoCh'];?></td>
                             <td><?php echo $chofer['tipoLicencia'];?></td>
                             <td><?php echo $chofer['numLicencia'];?></td>
-                            <td><?php echo $chofer['correo'];?></td>
+                            <td><?php echo $chofer['correoCh'];?></td>
                             <td>
                             <a href="pestañas/choferes/editarChofer.php?id=<?php echo $chofer['idChofer']; ?>" class="btn-editar btn">
                                 <i class="fas fa-pen-square"></i>
