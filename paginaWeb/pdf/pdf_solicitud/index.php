@@ -147,7 +147,7 @@
 </table>
 
 
-      <div id="thanks">Thank you!</div>
+      <div id="thanks">Gracias!</div>
       <div id="notices">
         <div class="notice">Uno de nuestros asesores procesará su solicitud y se pondrá en contacto con usted a la brevedad.</div>
       </div>

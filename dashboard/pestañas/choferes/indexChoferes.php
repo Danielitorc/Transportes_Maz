@@ -14,20 +14,28 @@
 
     <!-- Cabecera del listado de choferes "buscar mostrar y ocultar formulario" -->
     <div class="contenedor">
-        <div class="campos2">
+        <div class="encabezado">
+            <div class="campos2">
 
-            <!-- <div>
-                <label for="">Buscar Chofer</label>
-                <input class="cajaTexto" type="text" id="buscar">
-            </div> -->
+                <div class="nuevoChofer">
+                    <label for="btn_nuevoChofer">Agregar Nuevo</label>
+                    <a href="pestañas/choferes/formChoferes.php" class="btn_nuevoChofer btn"><i class="far fa-plus-square"></i></a>
+                </div>
 
-            <div class="nuevoChofer">
-                <label for="btn_nuevoChofer">Agregar Nuevo</label>
-                <a href="pestañas/choferes/formChoferes.php" class="btn_nuevoChofer btn"><i class="far fa-plus-square" ></i></a>
+                <div class="exportacion">
+                    <label for="" class="exportarListado">Exportar Listado</label>
+                    <div class="">
+                        <a href="pestañas/choferes/listadoChoferes.php">
+                            <img src="img/Microsoft-Excel-2013-icon.png" alt="" style="width: 15%; cursor: pointer;">
+                        </a>
+                    </div>
+                </div>
             </div>
-        </div>
 
+            
+        </div>
     </div>
+
 
     <div class="tabla-pendientes">
         <?php include 'funciones/funcionesChofer.php'; ?>
@@ -38,13 +46,14 @@
                 <thead>
                     <tr>
 
-                        <th>IdChofer</th>
+                        <!-- <th>IdChofer</th> -->
                         <th>Nombre</th>
                         <th>Apellidos</th>
                         <th>Teléfono</th>
                         <th>Tipo Licencia</th>
                         <th>Numero Licencia</th>
                         <th>Correo</th>
+                        <th>Exportar</th>
                         <th>Acciones</th>
 
                     </tr>
@@ -53,21 +62,27 @@
                 <tbody>
                     <tr>
 
-                    <?php
-                $choferes = obtenerChoferes();
-                if($choferes->num_rows){ 
-                    foreach($choferes as $chofer){?>
-                        <tr>
-                            
-                            
-                            <td><?php echo $chofer['idChofer'] ;?></td>
-                            <td><?php echo $chofer['nombreCh'] ;?></td>
-                            <td><?php echo $chofer['apellidosCh'];?></td>
-                            <td><?php echo $chofer['telefonoCh'];?></td>
-                            <td><?php echo $chofer['tipoLicencia'];?></td>
-                            <td><?php echo $chofer['numLicencia'];?></td>
-                            <td><?php echo $chofer['correoCh'];?></td>
-                            <td>
+                        <?php
+                        $choferes = obtenerChoferes();
+                        if ($choferes->num_rows) {
+                            foreach ($choferes as $chofer) { ?>
+                    <tr>
+
+
+                        <!-- <td><?php //echo $chofer['idChofer'] ;
+                                    ?></td> -->
+                        <td><?php echo $chofer['nombreCh']; ?></td>
+                        <td><?php echo $chofer['apellidosCh']; ?></td>
+                        <td><?php echo $chofer['telefonoCh']; ?></td>
+                        <td><?php echo $chofer['tipoLicencia']; ?></td>
+                        <td><?php echo $chofer['numLicencia']; ?></td>
+                        <td><?php echo $chofer['correoCh']; ?></td>
+                        <td class="exportar">
+                            <a href="pestañas/choferes/excelChoferes.php?idChofer=<?php echo $chofer['idChofer']; ?>">
+                                <img src="img/Microsoft-Excel-2013-icon.png" alt="" style="width: 40%; cursor: pointer;">
+                            </a>
+                        </td>
+                        <td>
                             <a href="pestañas/choferes/editarChofer.php?id=<?php echo $chofer['idChofer']; ?>" class="btn-editar btn">
                                 <i class="fas fa-pen-square"></i>
                             </a>
@@ -75,75 +90,54 @@
                                 <i class="fas fa-trash-alt"></i>
                             </button>
                         </td>
-                        </tr>
-
-                    <?php } 
-            } ?>
-
-                      
                     </tr>
-                    
+
+            <?php }
+                        } ?>
+
+
+            </tr>
+
                 </tbody>
             </table>
         </div>
     </div>
 
     <script type="text/javascript">
-
         const listadoChoferes = document.querySelector('#listado-choferes  tbody');
-        // const inputBuscador = document.querySelector('#buscar');
-        
-        
+        //const inputBuscador = document.querySelector('#buscar');
+
+
         eventListeners();
 
-        function eventListeners(){
+        function eventListeners() {
             listadoChoferes.addEventListener('click', eliminarContacto);
-
-            //Buscar Chofer por nombre
-            // inputBuscador.addEventListener('input', buscarChofer);
 
         }
 
-        // function buscarChofer(e){
-            
-        //     const expresion = new RegExp(e.target.value);
-        //     const registros = document.querySelectorAll('tbody tr');
+        function eliminarContacto(e) {
 
-        //     registros.forEach(registro => {
-        //        registro.style.display = 'none';
-
-        //        if(registro.childNodes[1].textContent.replace(/\s/g, " ").search(expresion) != -1 ){
-        //             registro.style.display = 'table-row';
-        //        }
-               
-        //   })
-
-            
-        // }
-
-        function eliminarContacto(e){
-
-            if(e.target.parentElement.classList.contains('btn-borrar')){
+            if (e.target.parentElement.classList.contains('btn-borrar')) {
                 //Tomar el id que se va eliminar
                 const id = e.target.parentElement.getAttribute('data-id');
 
                 const respuesta = confirm('Esta seguro que desea eliminar al Chofer');
 
-                if(respuesta){
+                if (respuesta) {
                     //LLAMADO AJAX
                     //CREO EL OBJETO
                     const xhr = new XMLHttpRequest();
 
-                    //ABRO LA CONEXION                       ?id=${respuesta.datos.id_insert_cot}
+                    //ABRO LA CONEXION              
                     xhr.open('GET', `pestañas/choferes/modelo/modelo-chofer.php?id=${id}&accion=borrar`, true);
 
                     //LEO RESPUESTA
-                    xhr.onload = function(){
-                        if(this.status == 200){
-                            const resultado = JSON.parse( xhr.responseText);
+                    xhr.onload = function() {
+                        if (this.status == 200) {
+                            const resultado = JSON.parse(xhr.responseText);
                             console.log(resultado);
 
-                            if(resultado.respuesta == 'correcto'){
+                            if (resultado.respuesta == 'correcto') {
 
                                 //Lo elimino del DOM (Tabla)
                                 console.log(e.target.parentElement.parentElement.parentElement);
@@ -157,15 +151,13 @@
                     }
                     //ENVIO PETICION
                     xhr.send();
-                }else{
+                } else {
                     console.log('NMOOOOOOO Eliminado...')
 
                 }
 
             }
         }
-
-
     </script>
 
 </body>

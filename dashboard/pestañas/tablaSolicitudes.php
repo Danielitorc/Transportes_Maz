@@ -33,7 +33,13 @@
                             <td><?php echo $solicitud['datosRec'];?></td>
                             <td><?php echo $solicitud['datosEnt'];?></td>
                             <td><?php echo $solicitud['unidad'];?></td>
-
+                            <td class="exportar">
+                                <a 
+                                href="pestañas/excelSolicitu.php?idsolicitud=<?php echo $solicitud['id']; ?>">
+                                    <img src="img/Microsoft-Excel-2013-icon.png" alt="" 
+                                    style="width: 40%; cursor: pointer;">
+                                </a>
+                            </td>
                             <!-- <td> <a href="pestañas/cotizar.php" target='_blank'>Cotizar</a> </td> -->
                             <td> <?php 
                                 echo "<a class='cotSolicitud' target='_blank' href='pestañas/cotizar.php?idsolicitud=" . $solicitud['id'] . "'>Cotizar</a>";

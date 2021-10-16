@@ -455,3 +455,18 @@ textarea{
   color: white;
   border-radius:1rem ;
 }
+
+.exportacion{
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  align-items: center;
+}
+
+.encabezado{
+  margin-bottom: 2.5rem;
+}
+
+.exportarListado{
+  font-weight: bold;
+  padding-left: .6rem!important;
+}

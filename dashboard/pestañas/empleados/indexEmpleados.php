@@ -13,19 +13,27 @@
 <body>
 
     <div class="contenedor">
-        <div class="campos2">
+        <div class="encabezado">
+            <div class="campos2">
 
-            <!-- <div>
-                <label for="">Buscar empleado</label>
-                <input class="cajaTexto" type="text" id="buscar">
-            </div> -->
+                <div class="nuevoChofer">
+                    <label for="btn_nuevoChofer">Agregar Nuevo</label>
+                    <a href="pestañas/empleados/nuevoEmpleado.php" class="btn_nuevoChofer btn"><i class="far fa-plus-square"></i></a>
+                </div>
 
-            <div class="nuevoChofer">
-                <label for="btn_nuevoChofer">Agregar Nuevo</label>
-                <a href="pestañas/empleados/nuevoEmpleado.php" class="btn_nuevoChofer btn"><i class="far fa-plus-square"></i></a>
+                
+                <div class="exportacion">
+                <label for="" class="exportarListado">Exportar Listado</label>
+                    <div class="">
+                        <a href="pestañas/empleados/listadoExcel.php">
+                            <img src="img/Microsoft-Excel-2013-icon.png" alt=""
+                            style="width: 15%; cursor: pointer;">
+                        </a>
+                    </div>
+                </div>
+
             </div>
         </div>
-
     </div>
 
     <div class="tabla-pendientes">
@@ -62,10 +70,12 @@
                             <td><?php echo $empleado['apellidos']; ?></td>
                             <td><?php echo $empleado['telefono']; ?></td>
                             <td><?php echo $empleado['correo']; ?></td>
-
+                            
                             <td class="exportar">
-                                <a href="#">
-                                    <img src="img/Microsoft-Excel-2013-icon.png" alt="" style="width: 40%; cursor: pointer;">
+                                <a 
+                                href="pestañas/empleados/excelEmpleado.php?idEmpleado=<?php echo $empleado['idEmpleado']; ?>">
+                                    <img src="img/Microsoft-Excel-2013-icon.png" alt="" 
+                                    style="width: 40%; cursor: pointer;">
                                 </a>
                             </td>
 
