@@ -36,7 +36,7 @@
     $objPHPExcel -> getActiveSheet()->setCellValue('B9',$chofer['direccionCh']);
 
     header("Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet");
-    header('Content-Disposition: attachment;filename = "Datos_Empleado.xlsx" ');
+    header('Content-Disposition: attachment;filename = "Datos_Chofer.xlsx" ');
     header('Cache-Control: max-age=0');
 
 

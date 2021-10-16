@@ -21,6 +21,10 @@ img{
     width: 100%;
 }
 
+.negrita{
+    font-size: 1.2rem!important;
+}
+
 /****** Navegacion ******/
 header{
     background: -moz-linear-gradient(
@@ -174,7 +178,7 @@ header .menu{
     height: 100vh;
     top: 0;
     right: -100%;
-    padding: 80px 50px;
+    /* padding: 80px 50px; */
     transition: 0.5s;
     transition-property: right;
 }
@@ -395,7 +399,7 @@ hr{
 .footer{
     background-color: rgb(20, 43, 43);
     display: block;
-    padding: 1rem 0;
+    padding: .2rem 0;
     margin: 1.4rem 0 0 0;
     color: white;
     font-weight: bold;
@@ -655,11 +659,22 @@ span{
     background-color: rgb(185, 0, 0);
     text-align: center;
     padding: 0.7rem;
-    padding-top: rem;
     color: #faebeb;
     text-transform: uppercase;
     margin-top: 1.2rem;
     font-size: 1.2rem;
+  }
+
+.errors_folio{
+    width: 100%;
+    background-color: rgb(185, 0, 0);
+    text-align: center;
+    padding: 0.7rem;
+    color: white;
+    text-transform: uppercase;
+    margin-top: 8rem;
+    font-weight: bold;
+    font-size: 1.4rem;
   }
   
   .errors li {
@@ -672,7 +687,6 @@ span{
     background-color: rgb(0, 185, 46);
     text-align: center;
     padding: 0.7rem;
-    padding-top: rem;
     color: white;
     font-weight: bold;
     text-transform: uppercase;
@@ -682,4 +696,103 @@ span{
 
 .corrects li {
     padding-top: 1rem;
+}
+
+
+/********* Actualizar solicitud *********/
+.ingresarFolio{
+    margin: 0 auto;
+    margin-top: 9.3rem;
+}
+
+.imagen{
+    margin: 0 auto;
+    margin-top: 1.5rem;
+}
+
+.campo_folio{
+    margin-top: 1.5rem;
+    text-align: center;
+}
+
+@media (min-width: 768px) {
+    
+    .imagen{
+        margin: 0 auto;
+        margin-top: 3rem;
+        text-align: center;
+        width: 70%;
+    }
+
+    .ingresarFolio{
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        align-items: center;
+        gap: 1.4rem;
+    }
+    .ingresarFolio label{
+        margin-right: -1.75rem!important;
+    }
+
+    .campo_enviar{
+        width: 50%;
+    }
+}
+
+.campo_enviar{
+    font-weight: bold;
+    font-size: 1.5rem;
+    background-color: rgb(25, 196, 25);
+    padding: .6rem;
+    border-radius: 14px;
+    transition: 1s ease;
+}
+
+.campo_enviar:hover{
+    background-color: rgb(19, 138, 19);
+    cursor: pointer;
+}
+
+.campo_enviar a{
+    text-decoration: none;
+    color: white;
+}
+
+.folioSolicitu{
+    font-weight: bold;
+    font-size: 1.3rem;
+}
+
+.ingresarFolio input[type=text]{
+    border: none;
+    border-radius: .8rem;
+    background-color: #e1e1e1;
+    padding: .6rem;
+    width: 100%!important;
+    font-size: 1.5rem;
+}
+
+.idChofer{
+    color: rgb(21, 9, 196); 
+    font-size: 2.1rem; 
+    font-weight: bold;
+}
+
+.id{
+    border: none!important;
+    color: rgb(21, 9, 196)!important;
+    font-weight: bold;
+    margin-left: 1.3rem;
+    width: 20%;
+    padding: 1.2rem;
+    font-size: 2rem;
+}
+
+.CampoId {
+    margin-left: 2.5rem;
+}
+
+.CampoId input[type=text]{
+    margin-left: 0;
+    background-color: transparent;
 }

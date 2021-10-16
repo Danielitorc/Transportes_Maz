@@ -23,9 +23,9 @@
                 <i class="fas fa-times close-btn"></i>
             </div>
             <ul>
-                <li><a href="#">Nosotros</a></li>
-                <li><a href="#services">Servicios</a></li>
-                <li><a href="paginaWeb/cotizacion.php">Cotización</a></li>
+                <li><a class="negrita" href="#">Nosotros</a></li>
+                <li><a class="negrita" href="#services">Servicios</a></li>
+                <li><a class="negrita" href="paginaWeb/cotizacion.php">Cotización</a></li>
             </ul>
         </nav>
         <div class="btn"><i class="fas fa-bars menu-btn"></i></div>
@@ -36,7 +36,7 @@
     </section>
 
 
-    <div class="seccion contenedor" id="services">
+    <div class="seccion contenedor" id="nosotros">
         <h2 class="centrar-texto">Sobre Nosotros</h2>
         <div class="contenedor-anuncios_nosotros">
             <div class="anuncio">
@@ -56,7 +56,7 @@
         </div>
     </div>
 
-    <div class="contenedor">
+    <div class="contenedor" >
         <div class="contenido-nosotros">
             <div class="imagen">
                 <img src="img/josiah-farrow-ucuOscdCaO4-unsplash.jpg" alt="Imagen Nosotros">
@@ -80,7 +80,7 @@
                     <div class="contenido-anuncio">
                         <h3>Maniobras</h3>
                         <ul>
-                            <li>Empacamos tu mercancia.</li>
+                            <li>Empacamos tu mercancía.</li>
                             <li>Carga y descarga de las Unidades.</li>
                             <li>Movimiento de moviliario.</li>
                             <li>Acomodo de mercancías y/o moviliario con ubicaciones en estanterías (racks, anaqueles, mostrador, etc).</li>
@@ -91,7 +91,7 @@
                 <div class="anuncio">
                     <img src="img/bernd-dittrich-eCc7FjMoR74-unsplash.jpg" alt="Logistica" />
                     <div class="contenido-anuncio">
-                        <h3>Logístca</h3>
+                        <h3>Logística</h3>
                         <ul>
                             <li>Transporte Público Federal.</li>
                             <li>Adecuamos la mejor logística acorde a tu necesidad.</li>

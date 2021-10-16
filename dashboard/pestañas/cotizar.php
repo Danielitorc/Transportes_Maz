@@ -7,7 +7,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="../../css/normalize.css">
         <link rel="stylesheet" href="../estilos/styleTablero.css">
-        <title>Document</title>
+        <title>Generar Cotización</title>
 </head>
 
 <body>

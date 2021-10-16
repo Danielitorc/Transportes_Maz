@@ -4,7 +4,7 @@
     function obtenerSolicitudes(){
         include 'db.php';
         try{
-            return $conexion->query("SELECT * FROM solicitudcotizacion WHERE estatus = 'pendiente'");
+            return $conexion->query("SELECT * FROM solicitudcotizacion WHERE estatus = 'pendiente' OR estatus = 'modificada'");
 
         }catch(Exception $e){
             echo "Error!!! " . $e->getMessage() . "br";

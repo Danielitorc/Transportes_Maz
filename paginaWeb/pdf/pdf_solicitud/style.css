@@ -15,7 +15,9 @@
   font-size: .8rem;
   text-align: center;
 }
-
+.modificada{
+  color: red;
+}
 a {
   color: #0087C3;
   text-decoration: none;

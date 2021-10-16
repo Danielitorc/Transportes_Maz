@@ -151,6 +151,24 @@ ul {
 }
 
 /***** Tablas ******/
+.cotSolicitud{
+  background-color: red;
+  padding: 1rem;
+  border-radius: 10px;
+  text-align: center;
+  text-transform: uppercase;
+  font-weight: bold;
+ transition: 1s ease-out;
+}
+
+.cotSolicitud a{
+  color: white;
+}
+
+.cotSolicitud:hover{
+  background-color: rgb(133, 12, 12);
+}
+
 .tabla-pendientes {
   margin: 0 2rem;
 }

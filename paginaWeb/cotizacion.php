@@ -22,9 +22,9 @@
           <i class="fas fa-times close-btn"></i>
         </div>
         <ul>
-        	<li><a href="../index.php">Nosotros</a></li>
-        	<li><a href="../index.php#services">Servicios</a></li>
-        	<li><a href="paginaWeb/cotizacion.php">Cotización</a></li>
+        	<li><a class="negrita"href="../index.php">Inicio</a></li>
+            <li><a class="negrita" href="layout/actualizar/folioActualizar.php">MODIFICAR DATOS</a></li>
+        	<li><a class="negrita" href="paginaWeb/cotizacion.php">CANCELAR SOLICITUD</a></li>
         </ul>
       </nav>
       <div class="btn">

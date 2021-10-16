@@ -65,7 +65,7 @@
       el día <span class="negrita">'.$sol["fecha"].' </span> 
       a las <span class="negrita">'.$sol["hora"].'</span> </p> 
 
-      <span class="negrita">Sobre su Mercanía: </span>'.$sol["adicionales"].'
+      <span class="negrita">Sobre su Mercancía: </span>'.$sol["adicionales"].'
       
       
       </td>
@@ -131,7 +131,7 @@
   </tr>
 
   <tr>
-  <td class="no">02</td> ';
+  <td class="no">03</td> ';
   if($sol["asegurar"]=='Sin seguro'){
     $seguro = "No requiere Seguro";
     $sol["costoSeguro"]=0;
@@ -141,7 +141,7 @@
   }else{
     $sol["costoSeguro"] = $sol["costoSeguro"];
     $plantilla .='
-    <td class="desc"><h3>Seguro</h3><p>El costo del seguro es del 1.5% sobre el valor de la mercanía</p></td>
+    <td class="desc"><h3>Seguro</h3><p>El costo del seguro es del 1.5% sobre el valor de la mercancía</p></td>
     <td class="total negrita">$ '.number_format($sol["costoSeguro"],2).'</td>';
   }
   $plantilla .='

@@ -33,7 +33,7 @@ function leerFormulario(e){
     e.preventDefault();
 
     //Leer los datos de los inputs
-
+    const idSolicitud = document.querySelector('#idSolicitud').value;
     const nombre = document.querySelector('#nombre').value;
     const apellidos = document.querySelector('#apellidos').value;
     const telefono= document.querySelector('#telefono').value;
@@ -87,7 +87,7 @@ function leerFormulario(e){
         //Si pasa la valaidacion, crear llamado a ajax
         
         const infoContacto = new FormData();
-
+        infoContacto.append('idSolicitud', idSolicitud);
         infoContacto.append('nombre', nombre.trim(nombre));
         infoContacto.append('apellidos', apellidos.trim());
         infoContacto.append('telefono', telefono.trim(apellidos));
@@ -107,49 +107,52 @@ function leerFormulario(e){
         infoContacto.append('accion', accion.trim(accion));
 
         //console.log(...infoContacto);
-
-        if(accion === 'crear'){
+            if(accion === 'actualizar'){
+          
             corrects.style.display = 'block';
             corrects.innerHTML += '<li>Datos enviados Correctamente</li>';
             setTimeout(() => {
                 corrects.style.display = 'none';
             }, 5000);
-            //Se crea un nueva solicitud
-            insertarBD(infoContacto);
+            //console.log(...infoContacto);
+            actualizarBD(infoContacto);
         }
     }
 }
 
-
-
-function insertarBD(datos){
+function actualizarBD(datos){
     //llamado a ajax
 
     //crear el objeto
     const xhr = new XMLHttpRequest();
 
     //abrir la conexion
-    xhr.open('POST','modelos/modelo-contacto.php', true);
+    xhr.open('POST','../../modelos/modeloActualizar.php', true);
 
     //Pasar los datos
     xhr.onload = function(){
         if(this.status === 200){
-            
+            const idS = idSolicitud.value;
+            console.log(idS)
             //Leo la respuesta de PHP 
             const respuesta = JSON.parse ( xhr.responseText );
 
-            //Inserta un nuevo elemento a la tabla
-            setTimeout(() => {
-                window.location.replace(`../paginaWeb/pdf/solicitud.php?id=${respuesta.datos.id_insertado}`)
-            }, 3000);
+            console.log(respuesta);
 
-           document.querySelector('form').reset();
+            //Inserta un nuevo elemento a la tabla
+           setTimeout(() => {
+            window.location.replace(`../../pdf/solicitudActualizada.php?id=${idS}`)
+           }, 3000);
+
+            //document.querySelector('form').reset();
 
         }
     }
     //enviar los datos
     xhr.send(datos);
 }
+
+
 
 //Validar si el cliente desea recibir ofertas a su correo
 function validarOfertas(){

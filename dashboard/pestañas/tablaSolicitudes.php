@@ -12,7 +12,7 @@
                 <th>Estado Origen</th>
                 <th>Estado Entrega</th>
                 <th>Unidad</th>
-                
+                <th>Estatus</th>
                 <th>Exportar</th>
                 <th>Cotizar</th>
 
@@ -33,6 +33,7 @@
                             <td><?php echo $solicitud['datosRec'];?></td>
                             <td><?php echo $solicitud['datosEnt'];?></td>
                             <td><?php echo $solicitud['unidad'];?></td>
+                            <td><?php echo $solicitud['estatus'];?></td>
                             <td class="exportar">
                                 <a 
                                 href="pestañas/excelSolicitu.php?idsolicitud=<?php echo $solicitud['id']; ?>">
@@ -41,9 +42,9 @@
                                 </a>
                             </td>
                             <!-- <td> <a href="pestañas/cotizar.php" target='_blank'>Cotizar</a> </td> -->
-                            <td> <?php 
-                                echo "<a class='cotSolicitud' target='_blank' href='pestañas/cotizar.php?idsolicitud=" . $solicitud['id'] . "'>Cotizar</a>";
-                            ?> </td>
+                            <td><div class="cotSolicitud"> <?php 
+                                echo "<a target='_blank' href='pestañas/cotizar.php?idsolicitud=" . $solicitud['id'] . "'>Cotizar</a>";
+                            ?> </div></td>
                         </tr>
 
                     <?php } 
