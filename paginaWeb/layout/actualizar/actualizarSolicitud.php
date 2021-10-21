@@ -41,7 +41,7 @@ require_once('../../funciones/funciones.php');
 
 if (!$solicitud) { ?>
     <div class="errors_folio">
-        <li>este folio no existe, verifique y vuelva a intentarlo</li>
+        <li>este folio no existe, porfavor verifique y vuelva a intentarlo</li>
     </div>
 
     <div class="contenedor">

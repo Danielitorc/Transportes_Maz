@@ -3,7 +3,7 @@ session_start();
 if(!isset($_SESSION['rol'])){
     header("location: login.php");
 }else{
-    if($_SESSION['rol'] != 1){
+    if($_SESSION['rol'] != 2){
         header("location: login.php");
     }
 }
@@ -47,18 +47,6 @@ if(!isset($_SESSION['rol'])){
                 <a class="btn-lateral">
                     <li data-paso="2">Asignar Ruta</li>
                 </a>
-                <a class="btn-lateral">
-                    <li data-paso="3">Choferes</li>
-                </a>
-                <a class="btn-lateral">
-                    <li data-paso="4">Empleados</li>
-                </a>
-                <a class="btn-lateral">
-                    <li data-paso="5" style="font-size: 2rem;">Generar Usuario</li>
-                </a>
-                <a class="btn-lateral">
-                    <li data-paso="6">Clientes</li>
-                </a>
             </ul>
         </section>
 
@@ -78,20 +66,6 @@ if(!isset($_SESSION['rol'])){
 
         <div id="paso-3" class="choferes seccion">
             <?php include 'pestañas/choferes/indexChoferes.php' ?>
-        </div>
-
-        <div id="paso-4" class="empleados seccion">
-        <?php include 'pestañas/empleados/indexEmpleados.php' ?>
-        </div>
-
-        <div id="paso-5" class="usuarios seccion">
-        <?php include 'pestañas/usuarios/indexUser.php' ?>
-
-        </div>
-
-        <div id="paso-6" class="clientes seccion">
-            <h2>Clientes</h2>
-
         </div>
 
     </div>

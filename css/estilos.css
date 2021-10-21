@@ -472,6 +472,7 @@ fieldset legend h1{
 .campo input[type=text],
 .campo input[type=tel],
 .campo input[type=email],
+.campo input[type=password],
 textarea
 {
     width: 100%;
@@ -796,3 +797,5 @@ span{
     margin-left: 0;
     background-color: transparent;
 }
+
+

@@ -1,3 +1,15 @@
+<?php
+session_start();
+if(!isset($_SESSION['rol'])){
+    header("location: login.php");
+}else{
+    if($_SESSION['rol'] != $_SESSION['rol'] ){
+        header("location: login.php");
+    }
+}
+?>
+
+
 <!DOCTYPE html>
 <html lang="es">
 
@@ -14,8 +26,7 @@
     <header class="header">
         <img class="logo" src="../../../img/logo.png" alt="">
 
-        <p>Zoraya Ruiz</p>
-        <p>Cerrar Sesión</p>
+        <?php $varsesion = $_SESSION['username']; echo "<p>$varsesion</p>" ?>
     </header>
 
     <div class="contenedor">

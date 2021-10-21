@@ -24,7 +24,7 @@
         <ul>
         	<li><a class="negrita"href="../index.php">Inicio</a></li>
             <li><a class="negrita" href="layout/actualizar/folioActualizar.php">MODIFICAR DATOS</a></li>
-        	<li><a class="negrita" href="paginaWeb/cotizacion.php">CANCELAR SOLICITUD</a></li>
+        	<li><a class="negrita" href="layout/cancelar/cancelarSolicitud.php">CANCELAR SOLICITUD</a></li>
         </ul>
       </nav>
       <div class="btn">

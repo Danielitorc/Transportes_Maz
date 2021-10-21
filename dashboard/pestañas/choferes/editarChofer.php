@@ -1,3 +1,14 @@
+<?php
+session_start();
+if(!isset($_SESSION['rol'])){
+    header("location: login.php");
+}else{
+    if($_SESSION['rol'] != $_SESSION['rol'] ){
+        header("location: login.php");
+    }
+}
+?>
+
 <link rel="stylesheet" href="../../../css/normalize.css">
 <link rel="stylesheet" href="../../estilos/styleTablero.css">
 

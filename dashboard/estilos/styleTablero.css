@@ -68,6 +68,23 @@ label{
   font-weight: bold;
 }
 
+.icono_exit i{
+  font-size: 3.4rem;
+}
+
+.exit{
+  display: flex;
+  flex-direction: column-reverse;
+  align-items: center;
+  margin: 0 .8rem;
+  justify-content: space-between;
+  color: white;
+}
+.exit > span{
+  color: white;
+  font-weight: bold;
+}
+
 /************************************ Dashboard ******************************/
 
 /***** Menu superior *****/
@@ -76,7 +93,7 @@ label{
     circle at 48.35% 47.65%,
     #becaff 0,
     #9eaff6 50%,
-    #7d95e3 100%
+    #5b77d6 100%
   );
   padding: 1rem;
   margin-bottom: 0;
